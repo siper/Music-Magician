@@ -59,7 +59,7 @@ dependencies {
     implementation("com.facebook.shimmer:shimmer:0.5.0")
 
     // MaterialDrawer
-    implementation("com.mikepenz:materialdrawer:6.1.2")
+    implementation("com.mikepenz:materialdrawer:8.4.2")
 
     // Rxjava 2
     implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
