@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#5145f1</color>
+    <color name="colorPrimaryDark">#5145f1</color>
+    <color name="colorAccent">#5145f1</color>
+    <color name="colorGray">#727272</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBlack">#000000</color>
+    <color name="imageFilter">#60000000</color>
+    <color name="text_primary">#393a3c</color>
+    <color name="text_secondary">#b1b3b6</color>
+    <color name="light_background">#fffafafa</color>
+    <color name="selected_bg">#eeeeee</color>
+</resources>
