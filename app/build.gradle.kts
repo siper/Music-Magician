@@ -63,7 +63,7 @@ dependencies {
 
     // Rxjava 2
     implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
-    implementation("io.reactivex.rxjava2:rxjava:2.2.16")
+    implementation("io.reactivex.rxjava2:rxjava:2.2.21")
     implementation("io.reactivex.rxjava2:rxkotlin:2.4.0")
 
     // StorIO
@@ -85,7 +85,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.5.21")
 
     // OkHttp 4
-    implementation("com.squareup.okhttp3:okhttp:4.2.2")
+    implementation("com.squareup.okhttp3:okhttp:4.9.1")
 
     // Retrofit 2
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
@@ -103,7 +103,7 @@ dependencies {
     implementation("io.insert-koin:koin-java:$koinVersion")
 
     // AdapterDelegates 4
-    val adapterDelegatesVersion = "4.2.0"
+    val adapterDelegatesVersion = "4.3.0"
     implementation("com.hannesdorfmann:adapterdelegates4-kotlin-dsl:$adapterDelegatesVersion")
     implementation("com.hannesdorfmann:adapterdelegates4-kotlin-dsl-layoutcontainer:$adapterDelegatesVersion")
 
@@ -118,7 +118,7 @@ dependencies {
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.7")
 
     // Timber
-    implementation("com.jakewharton.timber:timber:4.7.1")
+    implementation("com.jakewharton.timber:timber:5.0.0")
 
     testImplementation("junit:junit:4.13.2")
 }
