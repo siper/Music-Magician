@@ -103,7 +103,7 @@ dependencies {
     implementation("io.insert-koin:koin-java:$koinVersion")
 
     // AdapterDelegates 4
-    val adapterDelegatesVersion = "4.2.0"
+    val adapterDelegatesVersion = "4.3.0"
     implementation("com.hannesdorfmann:adapterdelegates4-kotlin-dsl:$adapterDelegatesVersion")
     implementation("com.hannesdorfmann:adapterdelegates4-kotlin-dsl-layoutcontainer:$adapterDelegatesVersion")
 
