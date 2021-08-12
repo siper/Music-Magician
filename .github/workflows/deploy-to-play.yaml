@@ -53,5 +53,5 @@ jobs:
           serviceAccountJson: service_account.json
           packageName: ru.stersh.musicmagician
           releaseFile: app/build/outputs/bundle/release/app-release.aab
-          track: beta
+          track: internal
           whatsNewDirectory: whatsnew/
