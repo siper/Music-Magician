@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/audio_menu"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/tracks"
+            android:icon="@drawable/ic_audiotrack_24px"
+            android:title="@string/drawer_tracks" />
+        <item
+            android:id="@+id/albums"
+            android:icon="@drawable/ic_album_24px"
+            android:title="@string/drawer_albums" />
+    </group>
+    <group
+        android:id="@+id/info_menu"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/feedback"
+            android:icon="@drawable/ic_email_24px"
+            android:title="@string/leave_feedback" />
+        <item
+            android:id="@+id/translate"
+            android:icon="@drawable/ic_translate_24px"
+            android:title="@string/translate_app" />
+        <item
+            android:id="@+id/privacy_policy"
+            android:icon="@drawable/ic_info_24px"
+            android:title="@string/privacy_policy" />
+    </group>
+</menu>

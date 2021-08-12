@@ -14,7 +14,4 @@ interface MainView : MvpView {
 
     @StateStrategyType(AddToEndSingleStrategy::class)
     fun showPermissionsError()
-
-    @StateStrategyType(AddToEndSingleStrategy::class)
-    fun hideBilling()
 }
