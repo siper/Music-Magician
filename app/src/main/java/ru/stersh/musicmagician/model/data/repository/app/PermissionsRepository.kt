@@ -33,7 +33,7 @@ class PermissionsRepository(private val context: Context) {
         this.activity = null
     }
 
-    fun onRequestPermissionResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+    fun onRequestPermissionResult(permissions: Array<String>, grantResults: IntArray) {
         val update = this.permissions.value!!
         permissions.forEachIndexed { index, s ->
             update[s] = grantResults[index] == PackageManager.PERMISSION_GRANTED

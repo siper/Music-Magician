@@ -1,5 +1,7 @@
 package ru.stersh.musicmagician.entity.tag
 
+import java.util.*
+
 data class TrackTag(
         val title: String = "",
         val artist: String = "",
@@ -13,7 +15,7 @@ data class TrackTag(
 ) : Tag {
     fun calculatePriority(query: String): TrackTag {
         var p = 0
-        val lQuery = query.toLowerCase()
+        val lQuery = query.lowercase(Locale.getDefault())
         if (title.isNotEmpty() && title.isNotBlank()) {
             p++
             if (query.contains(title)) p += 3

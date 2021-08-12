@@ -2,14 +2,12 @@ package ru.stersh.musicmagician.model.interactor.library
 
 import ru.stersh.musicmagician.entity.mediastore.Album
 import ru.stersh.musicmagician.model.data.repository.media.AlbumRepository
-import java.util.*
-import kotlin.Comparator
 
 class AlbumLibraryInteractor(private val repository: AlbumRepository) : LibraryInteractor<Album>() {
     override fun dataSource() = repository.getAlbums()
 
     override fun getSearchPredicate(item: Album, query: String): Boolean {
-        return item.title.toLowerCase(Locale.ROOT).contains(query) || item.artist.toLowerCase(Locale.ROOT).contains(query)
+        return item.title.contains(query, true) || item.artist.contains(query, true)
     }
 
     override fun getSortComparator(sortOrder: Int): Comparator<Album> {
