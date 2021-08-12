@@ -8,8 +8,9 @@ class TrackLibraryInteractor(private val repository: TrackRepository) : LibraryI
     override fun dataSource() = repository.getTracks()
 
     override fun getSearchPredicate(item: Track, query: String): Boolean {
-        return item.title.toLowerCase().contains(query)
-                || item.artist.toLowerCase().contains(query) || item.album.toLowerCase().contains(query)
+        return item.title.contains(query, true)
+                || item.artist.contains(query, true)
+                || item.album.contains(query, true)
     }
 
     override fun getSortComparator(sortOrder: Int): Comparator<Track> {

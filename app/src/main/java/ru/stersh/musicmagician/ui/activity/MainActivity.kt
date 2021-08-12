@@ -63,7 +63,7 @@ class MainActivity : BaseActivity(), MainView {
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        this.permissions.onRequestPermissionResult(requestCode, permissions, grantResults)
+        this.permissions.onRequestPermissionResult(permissions, grantResults)
     }
 
     override fun onResumeFragments() {

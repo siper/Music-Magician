@@ -8,6 +8,7 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.BehaviorSubject
 import timber.log.Timber
+import java.util.*
 
 abstract class LibraryInteractor<T> {
     private val lifecycle = CompositeDisposable()
@@ -57,7 +58,7 @@ abstract class LibraryInteractor<T> {
 
 
     fun search(query: String) {
-        this.query = query.toLowerCase()
+        this.query = query.lowercase(Locale.getDefault())
         content.onNext(contentCopy)
     }
 

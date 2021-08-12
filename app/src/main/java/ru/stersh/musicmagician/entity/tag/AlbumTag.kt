@@ -1,5 +1,7 @@
 package ru.stersh.musicmagician.entity.tag
 
+import java.util.*
+
 data class AlbumTag(
         val album: String,
         val artist: String,
@@ -10,7 +12,7 @@ data class AlbumTag(
 ) : Tag {
     fun calculatePriority(query: String): AlbumTag {
         var p = 0
-        val lQuery = query.toLowerCase()
+        val lQuery = query.lowercase(Locale.getDefault())
         if (album.isNotBlank() && album.isNotEmpty()) {
             p++
             if (query.contains(album)) p += 3
