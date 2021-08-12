@@ -15,6 +15,7 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
+
       - name: Cache Gradle Files
         uses: actions/cache@v2
         with:
@@ -22,14 +23,18 @@ jobs:
             ~/.gradle/caches/
             ~/.gradle/wrapper/
           key: cache-gradle
+
       - name: Setup Java
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
           java-version: '11'
+
       - name: Grant execute rights
         run: chmod +x gradlew
+
       - name: Run Gradle
         run: ./gradlew build check --continue
+
       - name: Stop Gradle
         run: ./gradlew --stop
