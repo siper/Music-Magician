@@ -19,10 +19,10 @@ class PagerAdapter(
 
     override fun setPrimaryItem(container: ViewGroup, position: Int, `object`: Any) {
         super.setPrimaryItem(container, position, `object`)
-        if (position !== mCurrentPosition && container is WrapViewPager) {
+        if (position != mCurrentPosition && container is WrapViewPager) {
             val fragment = `object` as Fragment
             val pager: WrapViewPager = container
-            if (fragment != null && fragment.view != null) {
+            if (fragment.view != null) {
                 mCurrentPosition = position
                 pager.measureCurrentView(fragment.view)
             }

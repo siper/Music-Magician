@@ -35,7 +35,7 @@ class TrackLibraryFragment : LibraryFragment() {
         }
         return@lazy items.toList()
     }
-    override val adapter = TrackLibraryAdapter { track, image ->
+    override val adapter = TrackLibraryAdapter { track, _ ->
         router.navigateTo(Screens.trackEditor(track))
     }
     override val title: String by lazy { getString(R.string.drawer_tracks) }
