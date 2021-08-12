@@ -31,7 +31,7 @@ class WrapViewPager : ViewPager {
             }
             // Not the best place to put this animation, but it works pretty good.
             val newHeight = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY)
-            if (layoutParams.height != 0 && heightMeasureSpec !== newHeight) {
+            if (layoutParams.height != 0 && heightMeasureSpec != newHeight) {
                 val targetHeight = height
                 val currentHeight = layoutParams.height
                 val heightChange = targetHeight - currentHeight
