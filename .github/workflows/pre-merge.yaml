@@ -10,10 +10,7 @@ on:
 
 jobs:
   gradle:
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     if: ${{ !contains(github.event.head_commit.message, 'ci skip') }}
     steps:
       - name: Checkout Repo
@@ -25,12 +22,13 @@ jobs:
             ~/.gradle/caches/
             ~/.gradle/wrapper/
           key: cache-gradle
-          
       - name: Setup Java
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
           java-version: '11'
+      - name: Grant execute rights
+        run: chmod +x gradlew
       - name: Run Gradle
         run: ./gradlew build check --continue
       - name: Stop Gradle
