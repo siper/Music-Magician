@@ -78,7 +78,7 @@ dependencies {
     implementation("com.squareup.picasso:picasso:2.71828")
 
     // Kotlin std
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.30")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.31")
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.5.30")
 
     // OkHttp 4
