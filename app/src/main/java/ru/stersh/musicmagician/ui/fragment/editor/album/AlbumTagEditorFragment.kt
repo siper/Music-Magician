@@ -10,12 +10,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
-import org.koin.android.ext.android.bind
 import org.koin.android.ext.android.inject
-import ru.stersh.musicmagician.R
 import ru.stersh.musicmagician.databinding.FragmentAlbumEditorBinding
-import ru.stersh.musicmagician.databinding.FragmentBaseEditorBinding
-import ru.stersh.musicmagician.entity.mediastore.Album
+import ru.stersh.musicmagician.data.core.entity.Album
 import ru.stersh.musicmagician.model.data.repository.media.AlbumRepository
 import ru.stersh.musicmagician.utils.android.EmptyTextWatcher
 import timber.log.Timber
@@ -24,7 +21,7 @@ class AlbumTagEditorFragment : Fragment() {
     private val lifecycle = CompositeDisposable()
     private val repository by inject<AlbumRepository>()
     private val albumId by lazy { requireArguments().getLong(AlbumEditorFragment.ALBUM_ID) }
-    private var album: Album? = null
+    private var album: ru.stersh.musicmagician.data.core.entity.Album? = null
 
     private val titleTextWatcher: EmptyTextWatcher = object : EmptyTextWatcher() {
         override fun afterTextChanged(s: Editable?) {
@@ -87,7 +84,7 @@ class AlbumTagEditorFragment : Fragment() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        { album: Album ->
+                        { album: ru.stersh.musicmagician.data.core.entity.Album ->
                             this.album = album
                             disableEditor()
                             if (binding.albumEditorTitle.text.toString() != album.title) {

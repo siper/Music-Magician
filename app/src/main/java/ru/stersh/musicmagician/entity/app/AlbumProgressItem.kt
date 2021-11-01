@@ -1,5 +1,5 @@
 package ru.stersh.musicmagician.entity.app
 
-import ru.stersh.musicmagician.entity.mediastore.MediastoreItem
+import ru.stersh.musicmagician.data.core.entity.MediastoreItem
 
-object AlbumProgressItem : MediastoreItem
+object AlbumProgressItem : ru.stersh.musicmagician.data.core.entity.MediastoreItem

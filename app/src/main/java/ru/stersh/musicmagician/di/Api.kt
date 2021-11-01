@@ -6,7 +6,7 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import ru.stersh.musicmagician.model.data.api.cajunlyrics.CajunlyricsApi
+import ru.stersh.musicmagician.data.server.cajunlyrics.CajunlyricsApi
 import ru.stersh.musicmagician.model.data.api.chartlyrics.ChartlyricsApi
 import ru.stersh.musicmagician.model.data.api.deezer.DeezerApi
 import ru.stersh.musicmagician.model.data.api.itunes.ItunesApi

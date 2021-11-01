@@ -1,3 +1,3 @@
 package ru.stersh.musicmagician.entity.tag
 
-object TagProgressItem : TagEntity
+object TagProgressItem : ru.stersh.musicmagician.data.server.core.entity.TagEntity

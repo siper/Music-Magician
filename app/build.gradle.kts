@@ -9,13 +9,13 @@ val versionMinor = 0
 val versionPatch = 3
 
 android {
-    compileSdk = 30
+    compileSdk = 31
     buildToolsVersion = "30.0.3"
 
     defaultConfig {
         applicationId = "ru.stersh.musicmagician"
         minSdk = 21
-        targetSdk = 30
+        targetSdk = 31
         versionCode = versionMajor * 10000 + versionMinor * 100 + versionPatch
         versionName = "${versionMajor}.${versionMinor}.${versionPatch}"
     }
@@ -48,27 +48,23 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    // Moxy
-    val moxyVersion = "2.2.2"
-    implementation("com.github.moxy-community:moxy:$moxyVersion")
-    implementation("com.github.moxy-community:moxy-androidx:$moxyVersion")
-    implementation("com.github.moxy-community:moxy-ktx:$moxyVersion")
-    kapt("com.github.moxy-community:moxy-compiler:$moxyVersion")
+    implementation(project(":data:local:core"))
+    implementation(project(":data:local:mediastore"))
 
     // Shimmer layout
     implementation("com.facebook.shimmer:shimmer:0.5.0")
 
-    // Rxjava 2
-    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
-    implementation("io.reactivex.rxjava2:rxjava:2.2.21")
-    implementation("io.reactivex.rxjava2:rxkotlin:2.4.0")
+    implementation(libs.bundles.kotlin.coroutines)
+
+    implementation(libs.bundles.moxy)
+    kapt(libs.moxy.compiler)
 
     // StorIO
     implementation("com.pushtorefresh.storio3:content-resolver:3.0.0")
 
     // AndroidX
     implementation("com.google.android.material:material:1.4.0")
-    implementation("androidx.appcompat:appcompat:1.3.1")
+    implementation(libs.androidx.appcompat)
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.palette:palette-ktx:1.0.0")
@@ -93,11 +89,7 @@ dependencies {
     implementation("com.google.code.gson:gson:2.8.8")
 
     // Koin
-    val koinVersion = "2.0.1"
-    implementation("io.insert-koin:koin-core:$koinVersion")
-    implementation("io.insert-koin:koin-android:$koinVersion")
-    implementation("io.insert-koin:koin-androidx-scope:$koinVersion")
-    implementation("io.insert-koin:koin-java:$koinVersion")
+    implementation(libs.bundles.koin)
 
     // AdapterDelegates 4
     val adapterDelegatesVersion = "4.3.0"
@@ -115,7 +107,7 @@ dependencies {
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.7")
 
     // Timber
-    implementation("com.jakewharton.timber:timber:5.0.1")
+    implementation(libs.timber)
 
     testImplementation("junit:junit:4.13.2")
 }

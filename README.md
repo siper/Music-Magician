@@ -5,6 +5,6 @@ Android automatic music tag editor
 
 ## Features
 
-- Automtic search tags
+- Automatic search tags
 - Automatic search lyrics
 - Albums edit

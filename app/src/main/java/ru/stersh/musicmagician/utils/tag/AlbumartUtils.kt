@@ -9,7 +9,7 @@ import com.squareup.picasso.Picasso
 import org.koin.core.get
 import ru.stersh.musicmagician.albumartUri
 import ru.stersh.musicmagician.di.Di
-import ru.stersh.musicmagician.entity.mediastore.Albumart
+import ru.stersh.musicmagician.data.core.entity.Albumart
 import ru.stersh.musicmagician.tempAlbumart
 import ru.stersh.musicmagician.thumbnails
 import ru.stersh.musicmagician.utils.ImageUtil
@@ -23,7 +23,7 @@ object AlbumartUtils {
     fun delete(id: Long) {
         val albumart = storIOContentResolver
             .get()
-            .`object`(Albumart::class.java)
+            .`object`(ru.stersh.musicmagician.data.core.entity.Albumart::class.java)
             .withQuery(
                 Query
                     .builder()
@@ -48,7 +48,7 @@ object AlbumartUtils {
     fun put(id: Long, newAlbumart: String) {
         var albumart = storIOContentResolver
             .get()
-            .`object`(Albumart::class.java)
+            .`object`(ru.stersh.musicmagician.data.core.entity.Albumart::class.java)
             .withQuery(
                 Query
                     .builder()
@@ -62,7 +62,7 @@ object AlbumartUtils {
                 if (exists()) delete()
             }
         }
-        albumart = Albumart(
+        albumart = ru.stersh.musicmagician.data.core.entity.Albumart(
             albumId = id,
             path = generateThumbnail(newAlbumart)
         )

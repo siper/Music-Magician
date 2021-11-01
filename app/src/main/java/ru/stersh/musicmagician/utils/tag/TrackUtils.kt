@@ -12,7 +12,7 @@ import org.jaudiotagger.tag.id3.valuepair.ImageFormats
 import org.jaudiotagger.tag.images.ArtworkFactory
 import org.jaudiotagger.tag.mp4.Mp4Tag
 import org.jaudiotagger.tag.reference.PictureTypes
-import ru.stersh.musicmagician.entity.mediastore.Track
+import ru.stersh.musicmagician.data.core.entity.Track
 import timber.log.Timber
 import java.io.File
 import java.io.IOException
@@ -21,7 +21,7 @@ import java.nio.charset.StandardCharsets
 import java.util.*
 
 object TrackUtils {
-    private fun getFlacTag(track: Track): FlacTag {
+    private fun getFlacTag(track: ru.stersh.musicmagician.data.core.entity.Track): FlacTag {
         val tag = FlacTag()
         if (!TextUtils.isEmpty(track.title)) {
             try {
@@ -98,7 +98,7 @@ object TrackUtils {
         return tag
     }
 
-    private fun getID3v1Tag(track: Track): Tag {
+    private fun getID3v1Tag(track: ru.stersh.musicmagician.data.core.entity.Track): Tag {
         val tag: Tag = ID3v1Tag()
         if (!TextUtils.isEmpty(track.title)) {
             try {
@@ -166,7 +166,7 @@ object TrackUtils {
         return tag
     }
 
-    private fun getID3v24Tag(track: Track): Tag {
+    private fun getID3v24Tag(track: ru.stersh.musicmagician.data.core.entity.Track): Tag {
         val tag: Tag = ID3v24Tag()
         if (!TextUtils.isEmpty(track.title)) {
             try {
@@ -249,7 +249,7 @@ object TrackUtils {
         return tag
     }
 
-    private fun getMp4Tag(track: Track): Mp4Tag {
+    private fun getMp4Tag(track: ru.stersh.musicmagician.data.core.entity.Track): Mp4Tag {
         val tag = Mp4Tag()
         if (!TextUtils.isEmpty(track.title)) {
             try {
@@ -321,7 +321,7 @@ object TrackUtils {
         return tag
     }
 
-    private fun getWavTag(track: Track): ID3v1Tag {
+    private fun getWavTag(track: ru.stersh.musicmagician.data.core.entity.Track): ID3v1Tag {
         val tag = ID3v1Tag()
         if (!TextUtils.isEmpty(track.title)) {
             try {
@@ -382,7 +382,7 @@ object TrackUtils {
         return tag
     }
 
-    fun save(track: Track) {
+    fun save(track: ru.stersh.musicmagician.data.core.entity.Track) {
         try {
             val audio = AudioFileIO().readFile(File(track.path))
             val path = track.path.lowercase(Locale.ROOT)

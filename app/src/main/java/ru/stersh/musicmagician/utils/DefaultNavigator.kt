@@ -9,7 +9,7 @@ import com.github.terrakok.cicerone.androidx.FragmentScreen
 import ru.stersh.musicmagician.extention.hideKeyboard
 import ru.stersh.musicmagician.ui.activity.MainActivity
 import ru.stersh.musicmagician.ui.fragment.editor.EditorFragment
-import ru.stersh.musicmagician.ui.fragment.library.LibraryFragment
+import ru.stersh.musicmagician.feature.library.core.LibraryFragment
 
 class DefaultNavigator(
     private val main: MainActivity, container: Int
@@ -26,7 +26,7 @@ class DefaultNavigator(
         currentFragment: Fragment?,
         nextFragment: Fragment
     ) {
-        if (currentFragment is LibraryFragment && nextFragment is EditorFragment) {
+        if (currentFragment is ru.stersh.musicmagician.feature.library.core.LibraryFragment && nextFragment is EditorFragment) {
             nextFragment.apply {
                 enterTransition = TransitionInflater
                     .from(this@DefaultNavigator.activity)

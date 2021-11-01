@@ -5,12 +5,11 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import moxy.InjectViewState
-import ru.stersh.musicmagician.entity.mediastore.Track
-import ru.stersh.musicmagician.entity.tag.LyricsTag
-import ru.stersh.musicmagician.entity.tag.Tag
-import ru.stersh.musicmagician.entity.tag.TagEntity
-import ru.stersh.musicmagician.entity.tag.TrackTag
-import ru.stersh.musicmagician.model.data.repository.media.TrackRepository
+import ru.stersh.musicmagician.data.core.TrackRepository
+import ru.stersh.musicmagician.data.server.core.entity.LyricsTag
+import ru.stersh.musicmagician.data.server.core.entity.Tag
+import ru.stersh.musicmagician.data.server.core.entity.TagEntity
+import ru.stersh.musicmagician.data.server.core.entity.TrackTag
 import ru.stersh.musicmagician.model.interactor.search.TrackSearchInteractor
 import ru.stersh.musicmagician.presentation.presenter.BasePresenter
 import ru.stersh.musicmagician.presentation.view.editor.TagSearchView
@@ -20,12 +19,12 @@ import timber.log.Timber
 
 @InjectViewState
 class TrackTagSearchPresenter(
-        private val repository: TrackRepository,
-        private val interactor: TrackSearchInteractor,
-        private val downloader: FileDownloader,
-        private val path: String
+    private val repository: TrackRepository,
+    private val interactor: TrackSearchInteractor,
+    private val downloader: FileDownloader,
+    private val path: String
 ) : BasePresenter<TagSearchView>() {
-    private lateinit var track: Track
+    private lateinit var track: ru.stersh.musicmagician.data.core.entity.Track
     private var isUpdates = false
 
     override fun onFirstViewAttach() {
@@ -51,8 +50,8 @@ class TrackTagSearchPresenter(
                 ).addTo(presenterLifecycle)
     }
 
-    fun applyTag(tag: Tag) {
-        if (tag is TrackTag) {
+    fun applyTag(tag: ru.stersh.musicmagician.data.server.core.entity.Tag) {
+        if (tag is ru.stersh.musicmagician.data.server.core.entity.TrackTag) {
             downloader
                     .download(tag.albumart, tempAlbumart)
                     .subscribeOn(Schedulers.io())
@@ -76,7 +75,7 @@ class TrackTagSearchPresenter(
                     )
                     .addTo(presenterLifecycle)
         }
-        if (tag is LyricsTag) {
+        if (tag is ru.stersh.musicmagician.data.server.core.entity.LyricsTag) {
             if (tag.lyrics.isNotEmpty()) {
                 isUpdates = true
                 repository.updateTrack(track.copy(lyrics = tag.lyrics))
@@ -84,7 +83,7 @@ class TrackTagSearchPresenter(
         }
     }
 
-    private fun search(track: Track) {
+    private fun search(track: ru.stersh.musicmagician.data.core.entity.Track) {
         interactor
                 .searchTags(track.title, track.artist)
                 .subscribeOn(Schedulers.io())
@@ -93,7 +92,7 @@ class TrackTagSearchPresenter(
                     viewState.showProgress()
                 }
                 .subscribe(
-                        { tags: List<TagEntity> ->
+                        { tags: List<ru.stersh.musicmagician.data.server.core.entity.TagEntity> ->
                             if (tags.isEmpty()) {
                                 viewState.showStub()
                             } else {

@@ -3,21 +3,19 @@ package ru.stersh.musicmagician
 import android.content.Intent
 import com.github.terrakok.cicerone.androidx.ActivityScreen
 import com.github.terrakok.cicerone.androidx.FragmentScreen
-import ru.stersh.musicmagician.entity.mediastore.Album
-import ru.stersh.musicmagician.entity.mediastore.Track
 import ru.stersh.musicmagician.ui.fragment.PrivacyPolicyFragment
 import ru.stersh.musicmagician.ui.fragment.editor.album.AlbumEditorFragment
 import ru.stersh.musicmagician.ui.fragment.editor.track.TrackEditorFragment
-import ru.stersh.musicmagician.ui.fragment.library.AlbumLibraryFragment
-import ru.stersh.musicmagician.ui.fragment.library.TrackLibraryFragment
+import ru.stersh.musicmagician.feature.library.album.AlbumLibraryFragment
+import ru.stersh.musicmagician.feature.library.track.TrackLibraryFragment
 
 object Screens {
     fun trackLibraryScreen() = FragmentScreen {
-        TrackLibraryFragment()
+        ru.stersh.musicmagician.feature.library.track.TrackLibraryFragment()
     }
 
     fun albumLibraryScreen() = FragmentScreen {
-        AlbumLibraryFragment()
+        ru.stersh.musicmagician.feature.library.album.AlbumLibraryFragment()
     }
 
     fun piracyPolicy() = FragmentScreen {
@@ -30,11 +28,11 @@ object Screens {
         }
     }
 
-    fun albumEditor(album: Album) = FragmentScreen {
+    fun albumEditor(album: ru.stersh.musicmagician.data.core.entity.Album) = FragmentScreen {
         AlbumEditorFragment.edit(album.id)
     }
 
-    fun trackEditor(track: Track) = FragmentScreen {
+    fun trackEditor(track: ru.stersh.musicmagician.data.core.entity.Track) = FragmentScreen {
         TrackEditorFragment.edit(track)
     }
 

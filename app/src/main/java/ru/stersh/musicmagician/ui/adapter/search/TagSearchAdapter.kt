@@ -13,7 +13,7 @@ import ru.stersh.musicmagician.entity.tag.*
 import ru.stersh.musicmagician.extention.dp
 import ru.stersh.musicmagician.utils.picasso.RoundedCornersTransformation
 
-class TagSearchAdapter(callback: (Tag) -> Unit) : AsyncListDifferDelegationAdapter<TagEntity>(DIFF_CALLBACK) {
+class TagSearchAdapter(callback: (ru.stersh.musicmagician.data.server.core.entity.Tag) -> Unit) : AsyncListDifferDelegationAdapter<ru.stersh.musicmagician.data.server.core.entity.TagEntity>(DIFF_CALLBACK) {
     init {
         delegatesManager
                 .addDelegate(trackTag { callback.invoke(it) })
@@ -24,19 +24,19 @@ class TagSearchAdapter(callback: (Tag) -> Unit) : AsyncListDifferDelegationAdapt
     }
 
     companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<TagEntity>() {
-            override fun areItemsTheSame(oldItem: TagEntity, newItem: TagEntity): Boolean {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ru.stersh.musicmagician.data.server.core.entity.TagEntity>() {
+            override fun areItemsTheSame(oldItem: ru.stersh.musicmagician.data.server.core.entity.TagEntity, newItem: ru.stersh.musicmagician.data.server.core.entity.TagEntity): Boolean {
                 if (oldItem is TagProgressItem && newItem is TagProgressItem) return true
-                if (oldItem is TrackTag && newItem is TrackTag) return true
+                if (oldItem is ru.stersh.musicmagician.data.server.core.entity.TrackTag && newItem is ru.stersh.musicmagician.data.server.core.entity.TrackTag) return true
                 return false
             }
 
-            override fun areContentsTheSame(oldItem: TagEntity, newItem: TagEntity): Boolean {
-                if (oldItem is TrackTag && newItem is TrackTag) {
+            override fun areContentsTheSame(oldItem: ru.stersh.musicmagician.data.server.core.entity.TagEntity, newItem: ru.stersh.musicmagician.data.server.core.entity.TagEntity): Boolean {
+                if (oldItem is ru.stersh.musicmagician.data.server.core.entity.TrackTag && newItem is ru.stersh.musicmagician.data.server.core.entity.TrackTag) {
                     return oldItem.title == newItem.title && oldItem.artist == newItem.artist && oldItem.album == newItem
                             .album && oldItem.albumart == newItem.albumart
                 }
-                if (oldItem is AlbumTag && newItem is AlbumTag) {
+                if (oldItem is ru.stersh.musicmagician.data.server.core.entity.AlbumTag && newItem is ru.stersh.musicmagician.data.server.core.entity.AlbumTag) {
                     return oldItem.artist == newItem.artist && oldItem.album == newItem.album
                             && oldItem.albumart == newItem.albumart
                 }
@@ -45,7 +45,7 @@ class TagSearchAdapter(callback: (Tag) -> Unit) : AsyncListDifferDelegationAdapt
             }
         }
 
-        fun tagHeader() = adapterDelegate<TagHeader, TagEntity>(R.layout.tag_header) {
+        fun tagHeader() = adapterDelegate<TagHeader, ru.stersh.musicmagician.data.server.core.entity.TagEntity>(R.layout.tag_header) {
             val title = findViewById<TextView>(R.id.title)
 
             bind {
@@ -53,7 +53,7 @@ class TagSearchAdapter(callback: (Tag) -> Unit) : AsyncListDifferDelegationAdapt
             }
         }
 
-        fun trackTag(tagCallback: (TrackTag) -> Unit) = adapterDelegate<TrackTag, TagEntity>(R.layout.track_item) {
+        fun trackTag(tagCallback: (ru.stersh.musicmagician.data.server.core.entity.TrackTag) -> Unit) = adapterDelegate<ru.stersh.musicmagician.data.server.core.entity.TrackTag, ru.stersh.musicmagician.data.server.core.entity.TagEntity>(R.layout.track_item) {
             val layout = findViewById<LinearLayout>(R.id.track_item)
             val title = findViewById<TextView>(R.id.title)
             val subtitle = findViewById<TextView>(R.id.artist)
@@ -88,7 +88,7 @@ class TagSearchAdapter(callback: (Tag) -> Unit) : AsyncListDifferDelegationAdapt
             }
         }
 
-        fun lyricsTag(tagCallback: (LyricsTag) -> Unit) = adapterDelegate<LyricsTag, TagEntity>(R.layout
+        fun lyricsTag(tagCallback: (ru.stersh.musicmagician.data.server.core.entity.LyricsTag) -> Unit) = adapterDelegate<ru.stersh.musicmagician.data.server.core.entity.LyricsTag, ru.stersh.musicmagician.data.server.core.entity.TagEntity>(R.layout
                 .lyrics_tag_item) {
             val layout = findViewById<ConstraintLayout>(R.id.root)
             val lyrics = findViewById<TextView>(R.id.lyrics)
@@ -100,7 +100,7 @@ class TagSearchAdapter(callback: (Tag) -> Unit) : AsyncListDifferDelegationAdapt
             }
         }
 
-        fun albumTag(tagCallback: (AlbumTag) -> Unit) = adapterDelegate<AlbumTag, TagEntity>(R.layout.track_item) {
+        fun albumTag(tagCallback: (ru.stersh.musicmagician.data.server.core.entity.AlbumTag) -> Unit) = adapterDelegate<ru.stersh.musicmagician.data.server.core.entity.AlbumTag, ru.stersh.musicmagician.data.server.core.entity.TagEntity>(R.layout.track_item) {
             val layout = findViewById<LinearLayout>(R.id.track_item)
             val title = findViewById<TextView>(R.id.title)
             val subtitle = findViewById<TextView>(R.id.artist)
@@ -139,6 +139,6 @@ class TagSearchAdapter(callback: (Tag) -> Unit) : AsyncListDifferDelegationAdapt
             }
         }
 
-        fun tagProgress() = adapterDelegate<TagProgressItem, TagEntity>(R.layout.shimmer_item) {}
+        fun tagProgress() = adapterDelegate<TagProgressItem, ru.stersh.musicmagician.data.server.core.entity.TagEntity>(R.layout.shimmer_item) {}
     }
 }

@@ -5,10 +5,9 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import moxy.InjectViewState
-import ru.stersh.musicmagician.entity.mediastore.Album
-import ru.stersh.musicmagician.entity.tag.AlbumTag
-import ru.stersh.musicmagician.entity.tag.Tag
-import ru.stersh.musicmagician.entity.tag.TagEntity
+import ru.stersh.musicmagician.data.server.core.entity.AlbumTag
+import ru.stersh.musicmagician.data.server.core.entity.Tag
+import ru.stersh.musicmagician.data.server.core.entity.TagEntity
 import ru.stersh.musicmagician.model.data.repository.media.AlbumRepository
 import ru.stersh.musicmagician.model.interactor.search.AlbumSearchInteractor
 import ru.stersh.musicmagician.presentation.presenter.BasePresenter
@@ -24,7 +23,7 @@ class AlbumTagSearchPresenter(
         private val downloader: FileDownloader,
         private val id: Long
 ) : BasePresenter<TagSearchView>() {
-    private lateinit var album: Album
+    private lateinit var album: ru.stersh.musicmagician.data.core.entity.Album
     private var isUpdates = false
 
     override fun onFirstViewAttach() {
@@ -50,8 +49,8 @@ class AlbumTagSearchPresenter(
                 ).addTo(presenterLifecycle)
     }
 
-    fun applyTag(tag: Tag) {
-        if (tag is AlbumTag) {
+    fun applyTag(tag: ru.stersh.musicmagician.data.server.core.entity.Tag) {
+        if (tag is ru.stersh.musicmagician.data.server.core.entity.AlbumTag) {
             downloader
                     .download(tag.albumart, tempAlbumart)
                     .subscribeOn(Schedulers.io())
@@ -75,7 +74,7 @@ class AlbumTagSearchPresenter(
         }
     }
 
-    private fun search(album: Album) {
+    private fun search(album: ru.stersh.musicmagician.data.core.entity.Album) {
         interactor
                 .searchTags(album.title, album.artist)
                 .subscribeOn(Schedulers.io())
@@ -84,7 +83,7 @@ class AlbumTagSearchPresenter(
                     viewState.showProgress()
                 }
                 .subscribe(
-                        { tags: List<TagEntity> ->
+                        { tags: List<ru.stersh.musicmagician.data.server.core.entity.TagEntity> ->
                             if (tags.isEmpty()) {
                                 viewState.showStub()
                             } else {

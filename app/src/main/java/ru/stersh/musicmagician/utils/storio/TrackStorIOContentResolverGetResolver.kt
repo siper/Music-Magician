@@ -1,21 +1,20 @@
 package ru.stersh.musicmagician.utils.storio
 
-import android.content.ContentResolver
 import android.content.ContentUris
 import android.database.Cursor
 import android.provider.MediaStore
 import com.pushtorefresh.storio3.contentresolver.StorIOContentResolver
 import com.pushtorefresh.storio3.contentresolver.operations.get.DefaultGetResolver
-import ru.stersh.musicmagician.entity.mediastore.Track
+import ru.stersh.musicmagician.data.core.entity.Track
 
-class TrackStorIOContentResolverGetResolver : DefaultGetResolver<Track>() {
+class TrackStorIOContentResolverGetResolver : DefaultGetResolver<ru.stersh.musicmagician.data.core.entity.Track>() {
 
     override fun mapFromCursor(
         storIOContentResolver: StorIOContentResolver,
         cursor: Cursor
-    ): Track {
+    ): ru.stersh.musicmagician.data.core.entity.Track {
         val trackId = cursor.getLong(cursor.getColumnIndex("_id"))
-        return Track(
+        return ru.stersh.musicmagician.data.core.entity.Track(
             id = trackId,
             path = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DATA)),
             uri = ContentUris.withAppendedId(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, trackId),

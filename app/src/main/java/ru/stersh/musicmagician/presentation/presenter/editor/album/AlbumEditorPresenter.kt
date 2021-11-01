@@ -5,7 +5,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import moxy.InjectViewState
-import ru.stersh.musicmagician.entity.mediastore.Album
+import ru.stersh.musicmagician.data.core.entity.Album
 import ru.stersh.musicmagician.model.data.repository.media.AlbumRepository
 import ru.stersh.musicmagician.presentation.presenter.BasePresenter
 import ru.stersh.musicmagician.presentation.view.editor.EditorView
@@ -17,7 +17,7 @@ class AlbumEditorPresenter(
     private val router: Router,
     private val id: Long
 ) : BasePresenter<EditorView>() {
-    private var album: Album? = null
+    private var album: ru.stersh.musicmagician.data.core.entity.Album? = null
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()

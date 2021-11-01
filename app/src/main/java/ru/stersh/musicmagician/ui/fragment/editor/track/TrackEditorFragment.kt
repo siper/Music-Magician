@@ -8,7 +8,7 @@ import moxy.ktx.moxyPresenter
 import org.koin.core.get
 import ru.stersh.musicmagician.R
 import ru.stersh.musicmagician.di.Di
-import ru.stersh.musicmagician.entity.mediastore.Track
+import ru.stersh.musicmagician.data.core.entity.Track
 import ru.stersh.musicmagician.presentation.presenter.editor.track.TrackEditorPresenter
 import ru.stersh.musicmagician.ui.fragment.editor.EditorFragment
 import java.io.File
@@ -35,7 +35,7 @@ class TrackEditorFragment : EditorFragment() {
 
     companion object {
         private const val PATH_KEY = "path"
-        fun edit(track: Track): TrackEditorFragment {
+        fun edit(track: ru.stersh.musicmagician.data.core.entity.Track): TrackEditorFragment {
             val bundle = Bundle().apply {
                 putString(PATH_KEY, track.path)
             }

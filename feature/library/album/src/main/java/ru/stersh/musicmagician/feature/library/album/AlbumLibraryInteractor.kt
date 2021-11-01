@@ -1,0 +1,49 @@
+package ru.stersh.musicmagician.feature.library.album
+
+import ru.stersh.musicmagician.data.core.AlbumRepository
+import ru.stersh.musicmagician.data.core.entity.Album
+import ru.stersh.musicmagician.feature.library.core.LibraryInteractor
+
+
+class AlbumLibraryInteractor(private val repository: AlbumRepository) : LibraryInteractor<Album>() {
+    override fun dataSource() = repository.getAllAlbums()
+
+    override fun getSearchPredicate(item: Album, query: String): Boolean {
+        return item.title.contains(query, true) || item.artist.contains(query, true)
+    }
+
+    override fun getSortComparator(sortOrder: Int): Comparator<Album> {
+        return when (sortOrder) {
+            1 -> Comparator { o1, o2 -> o2.title.compareTo(o1.title) }
+            2 -> Comparator { o1, o2 -> o1.artist.compareTo(o2.artist) }
+            3 -> Comparator { o1, o2 -> o2.artist.compareTo(o1.artist) }
+            4 -> Comparator { o1, o2 ->
+                val oo1 = if (o1.year.isEmpty()) {
+                    "0"
+                } else {
+                    o1.year
+                }
+                val oo2 = if (o2.year.isEmpty()) {
+                    "0"
+                } else {
+                    o2.year
+                }
+                oo1.compareTo(oo2)
+            }
+            5 -> Comparator { o1, o2 ->
+                val oo1 = if (o1.year.isEmpty()) {
+                    "0"
+                } else {
+                    o1.year
+                }
+                val oo2 = if (o2.year.isEmpty()) {
+                    "0"
+                } else {
+                    o2.year
+                }
+                oo2.compareTo(oo1)
+            }
+            else -> Comparator { o1, o2 -> o1.title.compareTo(o2.title) }
+        }
+    }
+}

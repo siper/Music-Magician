@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import moxy.MvpAppCompatFragment
 import ru.stersh.musicmagician.databinding.FragmentTagSearchBinding
-import ru.stersh.musicmagician.entity.tag.Tag
-import ru.stersh.musicmagician.entity.tag.TagEntity
+import ru.stersh.musicmagician.data.server.core.entity.Tag
+import ru.stersh.musicmagician.data.server.core.entity.TagEntity
 import ru.stersh.musicmagician.entity.tag.TagProgressItem
 import ru.stersh.musicmagician.extention.gone
 import ru.stersh.musicmagician.extention.show
@@ -19,7 +19,7 @@ abstract class TagSearchFragment : MvpAppCompatFragment(), TagSearchView {
     private val adapter = TagSearchAdapter { applyTag(it) }
     private val progressItems = listOf(TagProgressItem, TagProgressItem, TagProgressItem, TagProgressItem)
 
-    abstract fun applyTag(tag: Tag)
+    abstract fun applyTag(tag: ru.stersh.musicmagician.data.server.core.entity.Tag)
 
     private var _binding: FragmentTagSearchBinding? = null
     private val binding
@@ -51,7 +51,7 @@ abstract class TagSearchFragment : MvpAppCompatFragment(), TagSearchView {
         adapter.items = progressItems
     }
 
-    override fun showContent(tags: List<TagEntity>) {
+    override fun showContent(tags: List<ru.stersh.musicmagician.data.server.core.entity.TagEntity>) {
         binding.stub.root.gone()
         binding.content.show()
         adapter.items = tags

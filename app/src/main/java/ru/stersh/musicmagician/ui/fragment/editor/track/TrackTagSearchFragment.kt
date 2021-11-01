@@ -4,7 +4,7 @@ import android.os.Bundle
 import moxy.ktx.moxyPresenter
 import org.koin.core.get
 import ru.stersh.musicmagician.di.Di
-import ru.stersh.musicmagician.entity.tag.Tag
+import ru.stersh.musicmagician.data.server.core.entity.Tag
 import ru.stersh.musicmagician.presentation.presenter.editor.track.TrackTagSearchPresenter
 import ru.stersh.musicmagician.ui.fragment.editor.TagSearchFragment
 
@@ -14,7 +14,7 @@ class TrackTagSearchFragment : TagSearchFragment() {
         TrackTagSearchPresenter(Di.get(), Di.get(), Di.get(), path)
     }
 
-    override fun applyTag(tag: Tag) = presenter.applyTag(tag)
+    override fun applyTag(tag: ru.stersh.musicmagician.data.server.core.entity.Tag) = presenter.applyTag(tag)
 
     companion object {
         private const val PATH_KEY = "path"

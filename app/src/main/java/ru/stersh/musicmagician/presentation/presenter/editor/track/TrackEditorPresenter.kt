@@ -5,7 +5,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import moxy.InjectViewState
-import ru.stersh.musicmagician.entity.mediastore.Track
+import ru.stersh.musicmagician.data.core.entity.Track
 import ru.stersh.musicmagician.model.data.repository.media.TrackRepository
 import ru.stersh.musicmagician.presentation.presenter.BasePresenter
 import ru.stersh.musicmagician.presentation.view.editor.EditorView
@@ -17,7 +17,7 @@ class TrackEditorPresenter(
     private val router: Router,
     private val path: String
 ) : BasePresenter<EditorView>() {
-    private var track: Track? = null
+    private var track: ru.stersh.musicmagician.data.core.entity.Track? = null
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
