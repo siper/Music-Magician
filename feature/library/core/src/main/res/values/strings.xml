@@ -2,4 +2,9 @@
 <resources>
     <string name="media_error_title">No media found</string>
     <string name="media_error_message">Get some songs and come back</string>
+
+    <string name="az_title_sort">By title (A-Z)</string>
+    <string name="za_title_sort">By title (Z-A)</string>
+    <string name="az_artist_sort">By artist (A-Z)</string>
+    <string name="za_artist_sort">By artist (Z-A)</string>
 </resources>

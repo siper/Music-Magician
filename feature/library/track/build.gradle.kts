@@ -3,6 +3,5 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":feature:library:core"))
-    implementation(project(":data:local:core"))
+    api(project(":feature:library:core"))
 }

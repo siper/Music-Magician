@@ -3,20 +3,17 @@ package ru.stersh.musicmagician
 import android.content.Intent
 import com.github.terrakok.cicerone.androidx.ActivityScreen
 import com.github.terrakok.cicerone.androidx.FragmentScreen
-import ru.stersh.musicmagician.feature.library.album.AlbumLibraryFragment
-import ru.stersh.musicmagician.feature.library.track.TrackLibraryFragment
+import ru.stersh.musicmagician.feature.library.track.ui.TrackLibraryFragment
 import ru.stersh.musicmagician.ui.fragment.PrivacyPolicyFragment
-import ru.stersh.musicmagician.ui.fragment.editor.album.AlbumEditorFragment
-import ru.stersh.musicmagician.ui.fragment.editor.track.TrackEditorFragment
 
 object Screens {
     fun trackLibraryScreen() = FragmentScreen {
-        ru.stersh.musicmagician.feature.library.track.TrackLibraryFragment()
+        TrackLibraryFragment()
     }
 
-    fun albumLibraryScreen() = FragmentScreen {
-        ru.stersh.musicmagician.feature.library.album.AlbumLibraryFragment()
-    }
+//    fun albumLibraryScreen() = FragmentScreen {
+//        //ru.stersh.musicmagician.feature.library.album.AlbumLibraryFragment()
+//    }
 
     fun piracyPolicy() = FragmentScreen {
         PrivacyPolicyFragment()
@@ -28,13 +25,13 @@ object Screens {
         }
     }
 
-    fun albumEditor(album: ru.stersh.musicmagician.data.core.entity.Album) = FragmentScreen {
-        AlbumEditorFragment.edit(album.id)
-    }
-
-    fun trackEditor(track: ru.stersh.musicmagician.data.core.entity.Track) = FragmentScreen {
-        TrackEditorFragment.edit(track)
-    }
+//    fun albumEditor(album: ru.stersh.musicmagician.data.core.entity.Album) = FragmentScreen {
+//        AlbumEditorFragment.edit(album.id)
+//    }
+//
+//    fun trackEditor(track: ru.stersh.musicmagician.data.core.entity.Track) = FragmentScreen {
+//        TrackEditorFragment.edit(track)
+//    }
 
     fun feedback() = ActivityScreen {
         val intent = Intent(Intent.ACTION_SEND).apply {

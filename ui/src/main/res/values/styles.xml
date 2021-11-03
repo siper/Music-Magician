@@ -32,7 +32,6 @@
 
     <style name="ToolbarTitleTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:textSize">20sp</item>
-        <item name="fontPath">fonts/Montserrat-Bold.ttf</item>
     </style>
 
 </resources>

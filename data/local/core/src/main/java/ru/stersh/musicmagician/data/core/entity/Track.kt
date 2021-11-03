@@ -9,8 +9,6 @@ data class Track(
     val dateModified: Long = 0,
     val artist: String,
     val album: String,
-    val trackNumber: String,
-    val year: String,
     val uri: Uri,
     val albumId: Long,
     val duration: Long

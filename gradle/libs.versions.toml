@@ -2,7 +2,7 @@
 kotlin = "1.5.31"
 kotlin-ksp = "1.5.31-1.0.0"
 koin = "3.0.2"
-timber = "5.0.2"
+timber = "5.0.1"
 kotlin-coroutines = "1.4.2"
 android-gradle = "7.1.0-alpha01"
 detekt = "1.17.0"
@@ -27,6 +27,8 @@ network-okhttp = "4.9.2"
 network-retrofit = "2.9.0"
 androidx-recyclerview = "1.2.1"
 adapterdelegates = "4.3.0"
+shimmer = "0.5.0"
+cicerone = "7.1"
 
 [libraries]
 androidGradle = { module = "com.android.tools.build:gradle", version.ref = "android-gradle" }
@@ -36,6 +38,8 @@ androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidx-constraintlayout" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
+shimmer = { module = "com.facebook.shimmer:shimmer", version.ref = "shimmer" }
+cicerone = { module = "com.github.terrakok:cicerone", version.ref = "cicerone" }
 
 androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }

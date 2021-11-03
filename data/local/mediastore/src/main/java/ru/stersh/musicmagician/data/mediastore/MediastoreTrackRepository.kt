@@ -44,6 +44,8 @@ class MediastoreTrackRepository(private val contentResolver: ContentResolver) : 
         }
         contentResolver.registerContentObserver(uri, true, observer)
 
+        offer(getTracks())
+
         awaitClose {
             contentResolver.unregisterContentObserver(observer)
         }
@@ -97,8 +99,6 @@ class MediastoreTrackRepository(private val contentResolver: ContentResolver) : 
             put(MediaStore.Audio.Media.DATE_MODIFIED, dateModified)
             put(MediaStore.Audio.Media.ARTIST, artist)
             put(MediaStore.Audio.Media.ALBUM, album)
-            put(MediaStore.Audio.Media.TRACK, trackNumber)
-            put(MediaStore.Audio.Media.YEAR, year)
             put(MediaStore.Audio.Media.ALBUM_ID, albumId)
             put(MediaStore.Audio.Media.DURATION, duration)
         }
@@ -113,8 +113,6 @@ class MediastoreTrackRepository(private val contentResolver: ContentResolver) : 
             dateModified = getLongOrThrow(MediaStore.Audio.Media.DATE_MODIFIED),
             artist = getStringOrThrow(MediaStore.Audio.Media.ARTIST),
             album = getStringOrThrow(MediaStore.Audio.Media.ALBUM),
-            trackNumber = getStringOrThrow(MediaStore.Audio.Media.TRACK),
-            year = getStringOrThrow(MediaStore.Audio.Media.YEAR),
             uri = ContentUris.withAppendedId(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, id),
             albumId = getLongOrThrow(MediaStore.Audio.Media.ALBUM_ID),
             duration = getLongOrThrow(MediaStore.Audio.Media.DURATION)

@@ -40,6 +40,8 @@ class MediastoreAlbumRepository(private val contentResolver: ContentResolver) : 
         }
         contentResolver.registerContentObserver(uri, true, observer)
 
+        offer(getAlbums())
+
         awaitClose {
             contentResolver.unregisterContentObserver(observer)
         }
@@ -98,10 +100,9 @@ class MediastoreAlbumRepository(private val contentResolver: ContentResolver) : 
         val id = getLongOrThrow(MediaStore.Audio.Albums.ALBUM_ID)
         return Album(
             id = id,
-            title = getStringOrThrow(MediaStore.Audio.Media.TITLE),
+            title = getStringOrThrow(MediaStore.Audio.Media.ALBUM),
             artist = getStringOrThrow(MediaStore.Audio.Media.ARTIST),
-            year = getStringOrThrow(MediaStore.Audio.Media.YEAR),
-            albumArtUri = ContentUris.withAppendedId(albumArtUri, id),
+            albumArtUri = ContentUris.withAppendedId(albumArtUri, id)
         )
     }
 }

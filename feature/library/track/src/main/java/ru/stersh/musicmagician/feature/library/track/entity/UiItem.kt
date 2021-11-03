@@ -1,4 +1,4 @@
-package ru.stersh.musicmagician.feature.library.track.ui
+package ru.stersh.musicmagician.feature.library.track.entity
 
 import android.net.Uri
 

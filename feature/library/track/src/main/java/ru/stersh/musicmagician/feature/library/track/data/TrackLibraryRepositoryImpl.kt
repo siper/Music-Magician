@@ -13,7 +13,7 @@ class TrackLibraryRepositoryImpl(
 ) : TrackLibraryRepository {
     override fun getTracks(): Flow<List<LibraryTrack>> {
         return combine(trackRepository.getAllTracks(), albumRepository.getAllAlbums()) { tracks, albums ->
-            return@combine tracks.map { track ->
+            tracks.map { track ->
                 val albumArtUri = albums.firstOrNull { it.id == track.albumId }?.albumArtUri
                 LibraryTrack(
                     id = track.id,

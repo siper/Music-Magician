@@ -2,74 +2,59 @@ package ru.stersh.musicmagician.feature.library.track.ui
 
 import android.content.res.Configuration
 import android.os.Bundle
-import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.github.terrakok.cicerone.Router
+import kotlinx.coroutines.flow.collect
 import org.koin.android.ext.android.inject
-import ru.stersh.musicmagician.Screens
-import ru.stersh.musicmagician.extention.dp
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.stersh.musicmagician.feature.library.core.LibraryFragment
 import ru.stersh.musicmagician.feature.library.track.R
-import ru.stersh.musicmagician.feature.library.track.data.sortorder.TrackSortOrder
-import ru.stersh.musicmagician.ui.divider.TopAndBottomMargin
+import ru.stersh.musicmagician.feature.library.track.navigation.TrackLibraryNavigation
+import ru.stersh.musicmagician.feature.library.track.entity.UiItem
+import ru.stersh.musicmagician.feature.library.track.entity.UiTrackSortOrder
+import ru.stersh.musicmagician.ui.extension.dp
 
 class TrackLibraryFragment : LibraryFragment<UiItem, UiTrackSortOrder, TrackLibraryViewModel>() {
-    private val router by inject<Router>()
+    private val navigation by inject<TrackLibraryNavigation>()
+    override val viewModel: TrackLibraryViewModel by viewModel()
     override val adapter = TrackLibraryAdapter { track, _ ->
-        router.navigateTo(Screens.trackEditor(track))
+        navigation.openTrackEditor(track.id)
     }
     override val menuLayout: Int = R.menu.tracks_menu
-
-    override fun search(query: String) = presenter.search(query)
+    override val titleRes: Int = R.string.tracks
+    override val searchItemId: Int = R.id.search
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.az_title_sort -> {
-                presenter.sort(TrackSortOrder.AZ_TITLE)
+                viewModel.sort(UiTrackSortOrder.AZ_TITLE)
                 return true
             }
             R.id.za_title_sort -> {
-                presenter.sort(TrackSortOrder.ZA_TITLE)
+                viewModel.sort(UiTrackSortOrder.ZA_TITLE)
                 return true
             }
             R.id.az_artist_sort -> {
-                presenter.sort(TrackSortOrder.AZ_ARTIST)
+                viewModel.sort(UiTrackSortOrder.AZ_ARTIST)
                 return true
             }
             R.id.za_artist_sort -> {
-                presenter.sort(TrackSortOrder.ZA_ARTIST)
+                viewModel.sort(UiTrackSortOrder.ZA_ARTIST)
                 return true
             }
             R.id.oldest_sort -> {
-                presenter.sort(TrackSortOrder.OLDEST)
+                viewModel.sort(UiTrackSortOrder.OLDEST)
                 return true
             }
             R.id.newest_sort -> {
-                presenter.sort(TrackSortOrder.NEWEST)
+                viewModel.sort(UiTrackSortOrder.NEWEST)
                 return true
             }
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    fun setSortOrder(order: Int) {
-        val itemId = when (order) {
-            TrackSortOrder.ZA_TITLE.order -> R.id.za_title_sort
-            TrackSortOrder.AZ_ARTIST.order -> R.id.az_artist_sort
-            TrackSortOrder.ZA_ARTIST.order -> R.id.za_artist_sort
-            TrackSortOrder.NEWEST.order -> R.id.newest_sort
-            TrackSortOrder.OLDEST.order -> R.id.oldest_sort
-            else -> R.id.az_title_sort
-        }
-        menu?.findItem(itemId)?.isChecked = true
-    }
-
-    override fun onPrepareOptionsMenu(menu: Menu) {
-        setSortOrder(presenter.getSortOrder())
-        super.onPrepareOptionsMenu(menu)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -88,11 +73,28 @@ class TrackLibraryFragment : LibraryFragment<UiItem, UiTrackSortOrder, TrackLibr
         binding.content.layoutManager = layoutManager
         binding.content.addItemDecoration(TopAndBottomMargin(8.dp))
         binding.content.setHasFixedSize(true)
+
+        subscribeSortOrder()
+        subscribeItems()
     }
 
-    override fun showProgress() {
-        adapter.items = progressItems
-        binding.content.show()
-        binding.stub.root.gone()
+    private fun subscribeSortOrder() = lifecycleScope.launchWhenStarted {
+        viewModel.sortOrder.collect {
+            val itemId = when (it) {
+                UiTrackSortOrder.AZ_TITLE -> R.id.az_title_sort
+                UiTrackSortOrder.ZA_TITLE -> R.id.za_title_sort
+                UiTrackSortOrder.AZ_ARTIST -> R.id.az_artist_sort
+                UiTrackSortOrder.ZA_ARTIST -> R.id.za_artist_sort
+                UiTrackSortOrder.NEWEST -> R.id.newest_sort
+                UiTrackSortOrder.OLDEST -> R.id.oldest_sort
+            }
+            binding.toolbar.menu?.findItem(itemId)?.isChecked = true
+        }
+    }
+
+    private fun subscribeItems() = lifecycleScope.launchWhenStarted {
+        viewModel.items.collect {
+            adapter.items = it
+        }
     }
 }

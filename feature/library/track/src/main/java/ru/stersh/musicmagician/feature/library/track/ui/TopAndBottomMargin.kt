@@ -1,4 +1,4 @@
-package ru.stersh.musicmagician.ui.divider
+package ru.stersh.musicmagician.feature.library.track.ui
 
 import android.graphics.Rect
 import android.view.View

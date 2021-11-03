@@ -10,8 +10,6 @@
     <string name="tag_genre">Genre</string>
     <string name="tag_lyrics">Lyrics</string>
     <string name="tag_comment">Comment</string>
-    <string name="drawer_tracks">Tracks</string>
-    <string name="drawer_albums">Albums</string>
     <string name="progress_loading_files">Loading music files&#8230;</string>
     <string name="progress_loading_search_results">Loading results&#8230;</string>
     <string name="progress_saving_tags">Saving tags&#8230;</string>
@@ -32,12 +30,6 @@
     <string name="album_edit">Album editor</string>
     <string name="refresh">Refresh</string>
     <string name="filed_to_set_field">Filed to set field: %s</string>
-    <string name="az_title_sort">By title (A-Z)</string>
-    <string name="za_title_sort">By title (Z-A)</string>
-    <string name="az_artist_sort">By artist (A-Z)</string>
-    <string name="za_artist_sort">By artist (Z-A)</string>
-    <string name="newest_sort">Newest</string>
-    <string name="oldest_sort">Oldest</string>
     <string name="by_year_latest_sort">By year (Latest)</string>
     <string name="by_year_earliest_sort">By year (Earliest)</string>
     <string name="search_tags">Search tags</string>

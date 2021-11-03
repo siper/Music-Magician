@@ -6,9 +6,9 @@ import android.provider.MediaStore
 import com.pushtorefresh.storio3.contentresolver.StorIOContentResolver
 import com.pushtorefresh.storio3.contentresolver.queries.Query
 import com.squareup.picasso.Picasso
-import org.koin.core.get
+import org.koin.core.component.get
 import ru.stersh.musicmagician.albumartUri
-import ru.stersh.musicmagician.di.Di
+import ru.stersh.musicmagician.Di
 import ru.stersh.musicmagician.tempAlbumart
 import ru.stersh.musicmagician.thumbnails
 import ru.stersh.musicmagician.utils.ImageUtil
@@ -20,28 +20,28 @@ object AlbumartUtils {
     private val storIOContentResolver = Di.get<StorIOContentResolver>()
 
     fun delete(id: Long) {
-        val albumart = storIOContentResolver
-            .get()
-            .`object`(ru.stersh.musicmagician.data.core.entity.Albumart::class.java)
-            .withQuery(
-                Query
-                    .builder()
-                    .uri(ContentUris.withAppendedId(albumartUri, id))
-                    .build()
-            )
-            .prepare()
-            .executeAsBlocking()
-        if (albumart != null) {
-            File(albumart.path).apply {
-                if (exists()) delete()
-            }
-
-            storIOContentResolver
-                .delete()
-                .`object`(albumart)
-                .prepare()
-                .executeAsBlocking()
-        }
+//        val albumart = storIOContentResolver
+//            .get()
+//            .`object`(ru.stersh.musicmagician.data.core.entity.Albumart::class.java)
+//            .withQuery(
+//                Query
+//                    .builder()
+//                    .uri(ContentUris.withAppendedId(albumartUri, id))
+//                    .build()
+//            )
+//            .prepare()
+//            .executeAsBlocking()
+//        if (albumart != null) {
+//            File(albumart.path).apply {
+//                if (exists()) delete()
+//            }
+//
+//            storIOContentResolver
+//                .delete()
+//                .`object`(albumart)
+//                .prepare()
+//                .executeAsBlocking()
+//        }
     }
 
     fun put(id: Long, newAlbumart: String) {
@@ -58,7 +58,7 @@ object AlbumartUtils {
             .executeAsBlocking()
         if (albumart != null) {
             File(albumart.path).apply {
-                if (exists()) delete()
+               // if (exists()) delete()
             }
         }
         albumart = ru.stersh.musicmagician.data.core.entity.Albumart(

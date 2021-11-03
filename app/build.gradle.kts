@@ -48,11 +48,13 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
+    implementation(project(":ui"))
+    implementation(project(":feature:library:track"))
     implementation(project(":data:local:core"))
     implementation(project(":data:local:mediastore"))
 
     // Shimmer layout
-    implementation("com.facebook.shimmer:shimmer:0.5.0")
+    implementation(libs.shimmer)
 
     implementation(libs.bundles.kotlin.coroutines)
 
@@ -97,7 +99,7 @@ dependencies {
     implementation("com.hannesdorfmann:adapterdelegates4-kotlin-dsl-layoutcontainer:$adapterDelegatesVersion")
 
     // Cicerone
-    implementation("com.github.terrakok:cicerone:7.1")
+    implementation(libs.cicerone)
 
     // Calligraphy 3
     implementation("io.github.inflationx:calligraphy3:3.1.1")

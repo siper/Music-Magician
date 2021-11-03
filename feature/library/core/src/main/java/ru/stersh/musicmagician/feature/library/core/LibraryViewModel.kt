@@ -7,6 +7,6 @@ abstract class LibraryViewModel<T, S> : ViewModel() {
     abstract val items: Flow<List<T>>
     abstract val sortOrder: Flow<S>
 
-    abstract fun setSortOrder(order: S)
+    abstract fun sort(order: S)
     abstract fun search(query: String)
 }

@@ -4,17 +4,15 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
+import coil.load
 import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegate
-import com.squareup.picasso.Picasso
-import ru.stersh.musicmagician.data.core.entity.MediastoreItem
-import ru.stersh.musicmagician.entity.app.ui.TrackProgressItem
 import ru.stersh.musicmagician.feature.library.track.R
-import java.io.File
+import ru.stersh.musicmagician.feature.library.track.entity.UiItem
 
-class TrackLibraryAdapter(callback: (ru.stersh.musicmagician.data.core.entity.Track, ImageView) -> Unit) :
-    AsyncListDifferDelegationAdapter<ru.stersh.musicmagician.data.core.entity.MediastoreItem>
-        (DIFF_CALLBACK) {
+class TrackLibraryAdapter(
+    callback: (UiItem.UiTrack, ImageView) -> Unit
+) : AsyncListDifferDelegationAdapter<UiItem>(DIFF_CALLBACK) {
     init {
         delegatesManager
             .addDelegate(
@@ -26,33 +24,39 @@ class TrackLibraryAdapter(callback: (ru.stersh.musicmagician.data.core.entity.Tr
     }
 
     companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ru.stersh.musicmagician.data.core.entity.MediastoreItem>() {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<UiItem>() {
             override fun areItemsTheSame(
-                oldItem: ru.stersh.musicmagician.data.core.entity.MediastoreItem,
-                newItem: ru.stersh.musicmagician.data.core.entity.MediastoreItem
+                oldItem: UiItem,
+                newItem: UiItem
             ): Boolean {
-                if (oldItem is TrackProgressItem && newItem is TrackProgressItem) return true
-                if (oldItem is ru.stersh.musicmagician.data.core.entity.Track && newItem is ru.stersh.musicmagician.data.core.entity.Track) return oldItem.id == newItem.id
+                if (oldItem is UiItem.Progress && newItem is UiItem.Progress) {
+                    return true
+                }
+                if (oldItem is UiItem.UiTrack && newItem is UiItem.UiTrack) {
+                    return oldItem.id == newItem.id
+                }
                 return false
             }
 
             override fun areContentsTheSame(
-                oldItem: ru.stersh.musicmagician.data.core.entity.MediastoreItem,
-                newItem: ru.stersh.musicmagician.data.core.entity.MediastoreItem
+                oldItem: UiItem,
+                newItem: UiItem
             ): Boolean {
-                if (oldItem is ru.stersh.musicmagician.data.core.entity.Track && newItem is ru.stersh.musicmagician.data.core.entity.Track) {
-                    return oldItem.title == newItem.title && oldItem.artist == newItem.artist
-                            && oldItem.album == newItem.album && oldItem.albumart == newItem.albumart
+                if (oldItem is UiItem.Progress && newItem is UiItem.Progress) {
+                    return true
                 }
-                if (oldItem is TrackProgressItem && newItem is TrackProgressItem) return true
+                if (oldItem is UiItem.UiTrack && newItem is UiItem.UiTrack) {
+                    return oldItem.title == newItem.title
+                            && oldItem.artist == newItem.artist
+                            && oldItem.album == newItem.album
+                            && oldItem.albumArtUri == newItem.albumArtUri
+                }
                 return false
             }
         }
 
-        fun trackItem(callback: (ru.stersh.musicmagician.data.core.entity.Track, ImageView) -> Unit) =
-            adapterDelegate<ru.stersh.musicmagician.data.core.entity.Track, ru.stersh.musicmagician.data.core.entity.MediastoreItem>(
-                R.layout.track_item
-            ) {
+        fun trackItem(callback: (UiItem.UiTrack, ImageView) -> Unit) =
+            adapterDelegate<UiItem.UiTrack, UiItem>(R.layout.track_item) {
                 val layout = findViewById<LinearLayout>(R.id.track_item)
                 val title = findViewById<TextView>(R.id.title)
                 val artist = findViewById<TextView>(R.id.artist)
@@ -65,27 +69,12 @@ class TrackLibraryAdapter(callback: (ru.stersh.musicmagician.data.core.entity.Tr
                     title.text = item.title
                     artist.text = "${item.artist} (${item.album})"
 
-                    if (item.albumart.isNullOrEmpty()) {
-                        Picasso
-                            .get()
-                            .load(R.drawable.no_albumart)
-                            .fit()
-                            .error(R.drawable.no_albumart)
-                            .into(albumart)
-                    } else {
-                        Picasso
-                            .get()
-                            .load(File(item.albumart))
-                            .fit()
-                            .error(R.drawable.no_albumart)
-                            .into(albumart)
+                    item.albumArtUri?.let {
+                        albumart.load(it)
                     }
                 }
             }
 
-        fun trackProgressItem() =
-            adapterDelegate<TrackProgressItem, ru.stersh.musicmagician.data.core.entity.MediastoreItem>(
-                R.layout.shimmer_item
-            ) {}
+        fun trackProgressItem() = adapterDelegate<UiItem.Progress, UiItem>(R.layout.track_shimmer_item) {}
     }
 }

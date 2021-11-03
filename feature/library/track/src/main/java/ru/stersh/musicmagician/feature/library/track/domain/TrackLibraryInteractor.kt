@@ -1,4 +1,4 @@
-package ru.stersh.musicmagician.feature.library.track
+package ru.stersh.musicmagician.feature.library.track.domain
 
 import kotlinx.coroutines.flow.Flow
 import ru.stersh.musicmagician.feature.library.core.LibraryInteractor

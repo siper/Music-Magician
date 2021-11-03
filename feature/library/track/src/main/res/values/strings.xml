@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="newest_sort">Newest</string>
+    <string name="oldest_sort">Oldest</string>
+</resources>

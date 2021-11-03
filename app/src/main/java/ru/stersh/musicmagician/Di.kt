@@ -1,4 +1,4 @@
-package ru.stersh.musicmagician.di
+package ru.stersh.musicmagician
 
 import androidx.preference.PreferenceManager
 import com.github.terrakok.cicerone.Cicerone
@@ -9,15 +9,12 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.component.KoinComponent
 import org.koin.dsl.module
 import ru.stersh.musicmagician.data.mediastore.mediastoreDataModule
-import ru.stersh.musicmagician.model.interactor.search.AlbumSearchInteractor
-import ru.stersh.musicmagician.model.interactor.search.TrackSearchInteractor
+import ru.stersh.musicmagician.feature.library.track.trackLibraryModule
 import ru.stersh.musicmagician.utils.FileDownloader
 
 object Di : KoinComponent {
     val modules by lazy {
-        mutableListOf(android, utils, network, interactor, navigation, mediastoreDataModule).apply {
-            toList()
-        }
+        listOf(android, utils, network, navigation, mediastoreDataModule, trackLibraryModule)
     }
 
     private val android = module {
@@ -42,10 +39,5 @@ object Di : KoinComponent {
                 .newBuilder()
                 .build()
         }
-    }
-
-    private val interactor = module {
-        single { TrackSearchInteractor(get(), get(), get(), get(), get()) }
-        single { AlbumSearchInteractor(get(), get()) }
     }
 }

@@ -7,7 +7,6 @@ import io.github.inflationx.calligraphy3.CalligraphyInterceptor
 import io.github.inflationx.viewpump.ViewPump
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
-import ru.stersh.musicmagician.di.Di
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 

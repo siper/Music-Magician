@@ -20,9 +20,8 @@ abstract class LibraryFragment<T, S, V : LibraryViewModel<T, S>> : Fragment(), S
 
     abstract val adapter: AsyncListDifferDelegationAdapter<T>
 
-    protected var menu: Menu? = null
     private var _binding: FragmentLibraryBinding? = null
-    private val binding
+    protected val binding
         get() = _binding!!
 
     override fun onCreateView(
@@ -37,7 +36,6 @@ abstract class LibraryFragment<T, S, V : LibraryViewModel<T, S>> : Fragment(), S
 
     override fun onDestroyView() {
         super.onDestroyView()
-        menu = null
         binding.content.adapter = null
         _binding = null
     }
@@ -63,7 +61,6 @@ abstract class LibraryFragment<T, S, V : LibraryViewModel<T, S>> : Fragment(), S
         val searchItem = menu.findItem(searchItemId)
         val search = searchItem.actionView as SearchView
         search.setOnQueryTextListener(this)
-        this.menu = menu
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
