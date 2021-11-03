@@ -6,20 +6,19 @@ import android.net.Uri
 import com.pushtorefresh.storio3.contentresolver.operations.put.DefaultPutResolver
 import com.pushtorefresh.storio3.contentresolver.queries.InsertQuery
 import com.pushtorefresh.storio3.contentresolver.queries.UpdateQuery
-import ru.stersh.musicmagician.data.core.entity.Album
 
 class AlbumStorIOContentResolverPutResolver : DefaultPutResolver<ru.stersh.musicmagician.data.core.entity.Album>() {
     private val albumsUri = Uri.parse("content://media/external/audio/albums")
     override fun mapToInsertQuery(`object`: ru.stersh.musicmagician.data.core.entity.Album): InsertQuery {
         return InsertQuery.builder()
-                .uri(albumsUri)
-                .build()
+            .uri(albumsUri)
+            .build()
     }
 
     override fun mapToUpdateQuery(album: ru.stersh.musicmagician.data.core.entity.Album): UpdateQuery {
         return UpdateQuery.builder()
-                .uri(ContentUris.withAppendedId(albumsUri, album.id))
-                .build()
+            .uri(ContentUris.withAppendedId(albumsUri, album.id))
+            .build()
     }
 
     override fun mapToContentValues(album: ru.stersh.musicmagician.data.core.entity.Album): ContentValues {

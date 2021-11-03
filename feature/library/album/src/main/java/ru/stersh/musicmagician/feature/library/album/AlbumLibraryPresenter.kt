@@ -2,8 +2,8 @@ package ru.stersh.musicmagician.feature.library.album
 
 import moxy.InjectViewState
 import ru.stersh.musicmagician.entity.app.ui.AlbumSortOrder
-import ru.stersh.musicmagician.model.data.repository.app.UserRepository
 import ru.stersh.musicmagician.feature.library.core.LibraryView
+import ru.stersh.musicmagician.model.data.repository.app.UserRepository
 import ru.stersh.musicmagician.presentation.presenter.BasePresenter
 
 @InjectViewState

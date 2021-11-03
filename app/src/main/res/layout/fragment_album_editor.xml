@@ -31,7 +31,7 @@
                     android:inputType="textNoSuggestions"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:imeOptions="actionDone|flagNoExtractUi"/>
+                    android:imeOptions="actionDone|flagNoExtractUi" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -48,7 +48,7 @@
                     android:inputType="textNoSuggestions"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:imeOptions="actionDone|flagNoExtractUi"/>
+                    android:imeOptions="actionDone|flagNoExtractUi" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -65,7 +65,7 @@
                     android:inputType="textNoSuggestions"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:imeOptions="actionDone|flagNoExtractUi"/>
+                    android:imeOptions="actionDone|flagNoExtractUi" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -73,7 +73,7 @@
                 android:layout_marginTop="@dimen/default_margin"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/album_set_tags"/>
+                android:text="@string/album_set_tags" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

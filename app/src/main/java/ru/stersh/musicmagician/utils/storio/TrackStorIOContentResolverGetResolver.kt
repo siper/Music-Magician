@@ -5,7 +5,6 @@ import android.database.Cursor
 import android.provider.MediaStore
 import com.pushtorefresh.storio3.contentresolver.StorIOContentResolver
 import com.pushtorefresh.storio3.contentresolver.operations.get.DefaultGetResolver
-import ru.stersh.musicmagician.data.core.entity.Track
 
 class TrackStorIOContentResolverGetResolver : DefaultGetResolver<ru.stersh.musicmagician.data.core.entity.Track>() {
 

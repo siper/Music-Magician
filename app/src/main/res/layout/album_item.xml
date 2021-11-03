@@ -41,7 +41,7 @@
                 android:text="@string/tag_album"
                 android:textSize="@dimen/primary_album_list_size"
                 android:textColor="@color/text_primary"
-                android:textAlignment="center"/>
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/artist"

@@ -3,8 +3,8 @@ package ru.stersh.musicmagician.ui.fragment.editor.track
 import android.os.Bundle
 import moxy.ktx.moxyPresenter
 import org.koin.core.get
-import ru.stersh.musicmagician.di.Di
 import ru.stersh.musicmagician.data.server.core.entity.Tag
+import ru.stersh.musicmagician.di.Di
 import ru.stersh.musicmagician.presentation.presenter.editor.track.TrackTagSearchPresenter
 import ru.stersh.musicmagician.ui.fragment.editor.TagSearchFragment
 

@@ -23,15 +23,14 @@
             android:layout_marginRight="12dp"
             android:layout_marginLeft="12dp"
             android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp">
-        </ImageView>
+            android:layout_marginBottom="12dp"></ImageView>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center"
-            android:layout_weight="1" >
+            android:layout_weight="1">
 
             <TextView
                 android:id="@+id/title"
@@ -40,8 +39,7 @@
                 android:text="@string/tag_title"
                 android:maxLines="1"
                 android:ellipsize="end"
-                style="@android:style/TextAppearance.DeviceDefault.Medium">
-            </TextView>
+                style="@android:style/TextAppearance.DeviceDefault.Medium"></TextView>
 
             <TextView
                 android:id="@+id/subtitle"
@@ -51,8 +49,7 @@
                 android:textColor="#59000000"
                 android:maxLines="1"
                 android:ellipsize="end"
-                style="@android:style/TextAppearance.DeviceDefault.Medium">
-            </TextView>
+                style="@android:style/TextAppearance.DeviceDefault.Medium"></TextView>
 
         </LinearLayout>
 

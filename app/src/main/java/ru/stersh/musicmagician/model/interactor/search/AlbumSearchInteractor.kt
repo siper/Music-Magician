@@ -9,33 +9,42 @@ import ru.stersh.musicmagician.model.data.repository.api.deezer.DeezerAlbumTagRe
 import ru.stersh.musicmagician.model.data.repository.api.itunes.ItunesAlbumTagRepository
 
 class AlbumSearchInteractor(
-        private val deezerAlbumTagRepository: DeezerAlbumTagRepository,
-        private val itunesAlbumTagRepository: ItunesAlbumTagRepository
+    private val deezerAlbumTagRepository: DeezerAlbumTagRepository,
+    private val itunesAlbumTagRepository: ItunesAlbumTagRepository
 ) {
-    fun searchTags(title: String, artist: String): Single<List<ru.stersh.musicmagician.data.server.core.entity.TagEntity>> {
+    fun searchTags(
+        title: String,
+        artist: String
+    ): Single<List<ru.stersh.musicmagician.data.server.core.entity.TagEntity>> {
         return Single.zip(
-                deezer(title, artist),
-                itunes(title, artist),
-                BiFunction { t1, t2 ->
-                    mutableListOf<ru.stersh.musicmagician.data.server.core.entity.Tag>().apply {
-                        addAll(t1)
-                        addAll(t2)
-                        sortByDescending { it.priority }
-                        toList()
-                    }
+            deezer(title, artist),
+            itunes(title, artist),
+            BiFunction { t1, t2 ->
+                mutableListOf<ru.stersh.musicmagician.data.server.core.entity.Tag>().apply {
+                    addAll(t1)
+                    addAll(t2)
+                    sortByDescending { it.priority }
+                    toList()
                 }
+            }
         )
     }
 
-    private fun deezer(title: String, artist: String): Single<List<ru.stersh.musicmagician.data.server.core.entity.AlbumTag>> {
+    private fun deezer(
+        title: String,
+        artist: String
+    ): Single<List<ru.stersh.musicmagician.data.server.core.entity.AlbumTag>> {
         return deezerAlbumTagRepository
-                .getTags(title, artist)
-                .onErrorReturn { emptyList() }
+            .getTags(title, artist)
+            .onErrorReturn { emptyList() }
     }
 
-    private fun itunes(title: String, artist: String): Single<List<ru.stersh.musicmagician.data.server.core.entity.AlbumTag>> {
+    private fun itunes(
+        title: String,
+        artist: String
+    ): Single<List<ru.stersh.musicmagician.data.server.core.entity.AlbumTag>> {
         return itunesAlbumTagRepository
-                .getTags(title, artist)
-                .onErrorReturn { emptyList() }
+            .getTags(title, artist)
+            .onErrorReturn { emptyList() }
     }
 }

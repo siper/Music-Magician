@@ -9,15 +9,14 @@ import androidx.recyclerview.widget.DiffUtil
 import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegate
 import io.reactivex.disposables.CompositeDisposable
-import ru.stersh.musicmagician.ui.fragment.library.UiItem
 
 class AlbumLibraryAdapter(callback: (UiItem.Album) -> Unit) : AsyncListDifferDelegationAdapter<UiItem>(
     DIFF_CALLBACK
 ) {
     init {
         delegatesManager
-                .addDelegate(albumItem { callback.invoke(it) })
-                .addDelegate(albumProgressItem())
+            .addDelegate(albumItem { callback.invoke(it) })
+            .addDelegate(albumProgressItem())
     }
 
     companion object {

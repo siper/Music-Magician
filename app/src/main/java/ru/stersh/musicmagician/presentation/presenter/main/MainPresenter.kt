@@ -15,36 +15,36 @@ import timber.log.Timber
 
 @InjectViewState
 class MainPresenter(
-        private val permissions: PermissionsRepository,
-        private val preferences: UserRepository,
-        private val router: Router
+    private val permissions: PermissionsRepository,
+    private val preferences: UserRepository,
+    private val router: Router
 ) : BasePresenter<MainView>() {
     override fun onFirstViewAttach() {
         permissions
-                .hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .distinctUntilChanged()
-                .subscribe(
-                        {
-                            if (it) {
-                                when (preferences.currentScreen) {
-                                    0 -> {
-                                        router.newRootScreen(Screens.trackLibraryScreen())
-                                        viewState.trackLibrary()
-                                    }
-                                    1 -> {
-                                        router.newRootScreen(Screens.albumLibraryScreen())
-                                        viewState.albumLibrary()
-                                    }
-                                }
-                            } else {
-                                viewState.showPermissionsError()
+            .hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .distinctUntilChanged()
+            .subscribe(
+                {
+                    if (it) {
+                        when (preferences.currentScreen) {
+                            0 -> {
+                                router.newRootScreen(Screens.trackLibraryScreen())
+                                viewState.trackLibrary()
                             }
-                        },
-                        Timber::e
-                )
-                .addTo(presenterLifecycle)
+                            1 -> {
+                                router.newRootScreen(Screens.albumLibraryScreen())
+                                viewState.albumLibrary()
+                            }
+                        }
+                    } else {
+                        viewState.showPermissionsError()
+                    }
+                },
+                Timber::e
+            )
+            .addTo(presenterLifecycle)
     }
 
     fun requestPermissions() = permissions.request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -52,33 +52,33 @@ class MainPresenter(
     fun trackLibrary() {
         preferences.currentScreen = 0
         permissions
-                .hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .firstElement()
-                .subscribe(
-                        {
-                            if (it) router.newRootScreen(Screens.trackLibraryScreen())
-                        },
-                        Timber::e
-                )
-                .addTo(presenterLifecycle)
+            .hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .firstElement()
+            .subscribe(
+                {
+                    if (it) router.newRootScreen(Screens.trackLibraryScreen())
+                },
+                Timber::e
+            )
+            .addTo(presenterLifecycle)
     }
 
     fun albumLibrary() {
         preferences.currentScreen = 1
         permissions
-                .hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .firstElement()
-                .subscribe(
-                        {
-                            if (it) router.newRootScreen(Screens.albumLibraryScreen())
-                        },
-                        Timber::e
-                )
-                .addTo(presenterLifecycle)
+            .hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .firstElement()
+            .subscribe(
+                {
+                    if (it) router.newRootScreen(Screens.albumLibraryScreen())
+                },
+                Timber::e
+            )
+            .addTo(presenterLifecycle)
     }
 
     fun feedback() = router.navigateTo(Screens.feedback())

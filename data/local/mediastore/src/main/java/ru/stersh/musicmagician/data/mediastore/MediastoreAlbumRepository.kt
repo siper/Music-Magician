@@ -101,7 +101,7 @@ class MediastoreAlbumRepository(private val contentResolver: ContentResolver) : 
             title = getStringOrThrow(MediaStore.Audio.Media.TITLE),
             artist = getStringOrThrow(MediaStore.Audio.Media.ARTIST),
             year = getStringOrThrow(MediaStore.Audio.Media.YEAR),
-            albumArt = ContentUris.withAppendedId(albumArtUri, id),
+            albumArtUri = ContentUris.withAppendedId(albumArtUri, id),
         )
     }
 }

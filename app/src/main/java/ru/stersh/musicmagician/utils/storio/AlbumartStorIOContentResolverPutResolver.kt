@@ -6,19 +6,19 @@ import com.pushtorefresh.storio3.contentresolver.operations.put.DefaultPutResolv
 import com.pushtorefresh.storio3.contentresolver.queries.InsertQuery
 import com.pushtorefresh.storio3.contentresolver.queries.UpdateQuery
 import ru.stersh.musicmagician.albumartUri
-import ru.stersh.musicmagician.data.core.entity.Albumart
 
-class AlbumartStorIOContentResolverPutResolver : DefaultPutResolver<ru.stersh.musicmagician.data.core.entity.Albumart>() {
+class AlbumartStorIOContentResolverPutResolver :
+    DefaultPutResolver<ru.stersh.musicmagician.data.core.entity.Albumart>() {
     override fun mapToInsertQuery(albumart: ru.stersh.musicmagician.data.core.entity.Albumart): InsertQuery {
         return InsertQuery.builder()
-                .uri(albumartUri)
-                .build()
+            .uri(albumartUri)
+            .build()
     }
 
     override fun mapToUpdateQuery(albumart: ru.stersh.musicmagician.data.core.entity.Albumart): UpdateQuery {
         return UpdateQuery.builder()
-                .uri(ContentUris.withAppendedId(albumartUri, albumart.albumId))
-                .build()
+            .uri(ContentUris.withAppendedId(albumartUri, albumart.albumId))
+            .build()
     }
 
     override fun mapToContentValues(albumart: ru.stersh.musicmagician.data.core.entity.Albumart): ContentValues {

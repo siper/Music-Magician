@@ -5,7 +5,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import moxy.InjectViewState
-import ru.stersh.musicmagician.data.core.entity.Track
 import ru.stersh.musicmagician.model.data.repository.media.TrackRepository
 import ru.stersh.musicmagician.presentation.presenter.BasePresenter
 import ru.stersh.musicmagician.presentation.view.editor.EditorView
@@ -22,19 +21,19 @@ class TrackEditorPresenter(
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         repository
-                .getTrack(path)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        {
-                            track = it
-                            viewState.bindHeader(it.title, it.artist, it.albumart)
-                        },
-                        {
-                            Timber.e(it)
-                        }
-                )
-                .addTo(presenterLifecycle)
+            .getTrack(path)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    track = it
+                    viewState.bindHeader(it.title, it.artist, it.albumart)
+                },
+                {
+                    Timber.e(it)
+                }
+            )
+            .addTo(presenterLifecycle)
     }
 
     override fun onDestroy() {
@@ -46,17 +45,17 @@ class TrackEditorPresenter(
 
     fun save() {
         repository
-                .save(track)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        {
-                            router.exit()
-                        },
-                        {
-                            Timber.e(it)
-                        }
-                )
-                .addTo(presenterLifecycle)
+            .save(track)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    router.exit()
+                },
+                {
+                    Timber.e(it)
+                }
+            )
+            .addTo(presenterLifecycle)
     }
 }

@@ -7,12 +7,12 @@ import io.reactivex.Single
 
 object RxPalette {
     private val DOMINANT = Target
-            .Builder()
-            .setPopulationWeight(1f)
-            .setSaturationWeight(0f)
-            .setLightnessWeight(0f)
-            .setExclusive(false)
-            .build()
+        .Builder()
+        .setPopulationWeight(1f)
+        .setSaturationWeight(0f)
+        .setLightnessWeight(0f)
+        .setExclusive(false)
+        .build()
 
     fun generate(bitmap: Bitmap): Single<Palette> {
         return Single.fromCallable {

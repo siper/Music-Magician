@@ -9,7 +9,6 @@ import com.squareup.picasso.Picasso
 import org.koin.core.get
 import ru.stersh.musicmagician.albumartUri
 import ru.stersh.musicmagician.di.Di
-import ru.stersh.musicmagician.data.core.entity.Albumart
 import ru.stersh.musicmagician.tempAlbumart
 import ru.stersh.musicmagician.thumbnails
 import ru.stersh.musicmagician.utils.ImageUtil

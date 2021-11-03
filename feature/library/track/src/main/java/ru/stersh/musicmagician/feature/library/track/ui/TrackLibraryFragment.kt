@@ -8,34 +8,19 @@ import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.terrakok.cicerone.Router
-import moxy.ktx.moxyPresenter
-import org.koin.core.get
+import org.koin.android.ext.android.inject
 import ru.stersh.musicmagician.Screens
-import ru.stersh.musicmagician.di.Di
-import ru.stersh.musicmagician.entity.app.ui.TrackProgressItem
 import ru.stersh.musicmagician.extention.dp
 import ru.stersh.musicmagician.feature.library.core.LibraryFragment
 import ru.stersh.musicmagician.feature.library.track.R
-import ru.stersh.musicmagician.feature.library.track.entity.TrackSortOrder
+import ru.stersh.musicmagician.feature.library.track.data.sortorder.TrackSortOrder
 import ru.stersh.musicmagician.ui.divider.TopAndBottomMargin
 
-class TrackLibraryFragment : LibraryFragment() {
+class TrackLibraryFragment : LibraryFragment<UiItem, UiTrackSortOrder, TrackLibraryViewModel>() {
     private val router by inject<Router>()
-    private val presenter by moxyPresenter {
-        TrackLibraryPresenter(Di.get(), Di.get())
+    override val adapter = TrackLibraryAdapter { track, _ ->
+        router.navigateTo(Screens.trackEditor(track))
     }
-    private val progressItems: List<TrackProgressItem> by lazy {
-        val items = mutableListOf<TrackProgressItem>()
-        for (i in 1..30) {
-            items.add(TrackProgressItem)
-        }
-        return@lazy items.toList()
-    }
-    override val adapter =
-        TrackLibraryAdapter { track, _ ->
-            router.navigateTo(Screens.trackEditor(track))
-        }
-    override val title: String by lazy { getString(R.string.drawer_tracks) }
     override val menuLayout: Int = R.menu.tracks_menu
 
     override fun search(query: String) = presenter.search(query)
@@ -70,7 +55,7 @@ class TrackLibraryFragment : LibraryFragment() {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun setSortOrder(order: Int) {
+    fun setSortOrder(order: Int) {
         val itemId = when (order) {
             TrackSortOrder.ZA_TITLE.order -> R.id.za_title_sort
             TrackSortOrder.AZ_ARTIST.order -> R.id.az_artist_sort

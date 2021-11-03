@@ -12,7 +12,8 @@ fun AppCompatActivity.hasPermissions(vararg permissions: String): Boolean {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         for (permission in permissions) {
             if (ActivityCompat.checkSelfPermission(this, permission)
-                    != PackageManager.PERMISSION_GRANTED) {
+                != PackageManager.PERMISSION_GRANTED
+            ) {
                 return false
             }
         }
@@ -25,6 +26,7 @@ fun FragmentActivity.hideKeyboard() {
     val currentFocusedView = currentFocus
     currentFocusedView?.let {
         inputMethodManager.hideSoftInputFromWindow(
-                currentFocusedView.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+            currentFocusedView.windowToken, InputMethodManager.HIDE_NOT_ALWAYS
+        )
     }
 }

@@ -5,7 +5,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import moxy.InjectViewState
-import ru.stersh.musicmagician.data.core.entity.Album
 import ru.stersh.musicmagician.model.data.repository.media.AlbumRepository
 import ru.stersh.musicmagician.presentation.presenter.BasePresenter
 import ru.stersh.musicmagician.presentation.view.editor.EditorView
@@ -22,20 +21,20 @@ class AlbumEditorPresenter(
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         repository
-                .getAlbum(id)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        {
-                            album = it
-                            viewState.bindHeader(it.title, it.artist, it.albumart)
-                        },
-                        {
-                            router.exit()
-                            Timber.e(it)
-                        }
-                )
-                .addTo(presenterLifecycle)
+            .getAlbum(id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    album = it
+                    viewState.bindHeader(it.title, it.artist, it.albumart)
+                },
+                {
+                    router.exit()
+                    Timber.e(it)
+                }
+            )
+            .addTo(presenterLifecycle)
     }
 
     override fun onDestroy() {
@@ -47,17 +46,17 @@ class AlbumEditorPresenter(
 
     fun save() {
         repository
-                .save(album)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        {
-                            router.exit()
-                        },
-                        {
-                            Timber.e(it)
-                        }
-                )
-                .addTo(presenterLifecycle)
+            .save(album)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    router.exit()
+                },
+                {
+                    Timber.e(it)
+                }
+            )
+            .addTo(presenterLifecycle)
     }
 }

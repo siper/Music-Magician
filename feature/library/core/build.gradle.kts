@@ -1,12 +1,16 @@
 plugins {
     `android-module`
-    kotlin("kapt")
 }
 
 dependencies {
     api(project(":data:local:core"))
-    api(libs.bundles.moxy)
+    implementation(project(":ui"))
+    api(libs.androidx.lifecycle.viewmodel)
     api(libs.androidx.appcompat)
-    kapt(libs.moxy.compiler)
     api(libs.bundles.kotlin.coroutines)
+    api(libs.bundles.koin)
+    api(libs.androidx.lifecycle.runtime)
+    implementation(libs.androidx.recyclerview.core)
+    implementation(libs.bundles.adapterdelegates)
+    implementation(libs.androidx.constraintlayout)
 }

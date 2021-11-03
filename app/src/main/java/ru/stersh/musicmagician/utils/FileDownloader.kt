@@ -17,11 +17,11 @@ data class FileDownloader(private val okHttpClient: OkHttpClient) {
         val f = File(path)
         if (f.exists()) f.delete()
         val call: Call = okHttpClient.newCall(
-                Request
-                        .Builder()
-                        .url(url)
-                        .get()
-                        .build()
+            Request
+                .Builder()
+                .url(url)
+                .get()
+                .build()
         )
         return Observable.fromPublisher<Int> {
             try {

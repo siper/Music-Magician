@@ -18,7 +18,6 @@ import moxy.MvpAppCompatFragment
 import org.koin.android.ext.android.inject
 import ru.stersh.musicmagician.R
 import ru.stersh.musicmagician.databinding.FragmentBaseEditorBinding
-import ru.stersh.musicmagician.databinding.FragmentPrivacyPolicyBinding
 import ru.stersh.musicmagician.extention.dp
 import ru.stersh.musicmagician.extention.gone
 import ru.stersh.musicmagician.extention.show
@@ -72,20 +71,20 @@ abstract class EditorFragment : MvpAppCompatFragment(), EditorView {
     override fun bindHeader(title: String, subtitle: String, albumart: String) {
         val picasso = if (albumart.startsWith("http")) {
             Picasso
-                    .get()
-                    .load(albumart)
+                .get()
+                .load(albumart)
         } else {
             Picasso
-                    .get()
-                    .load(File(albumart))
+                .get()
+                .load(File(albumart))
         }
         picasso
-                .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
-                .transform(RoundedCornersTransformation(8.dp, 0))
-                .error(R.drawable.no_albumart)
-                .noFade()
-                .fit()
-                .into(binding.albumart)
+            .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
+            .transform(RoundedCornersTransformation(8.dp, 0))
+            .error(R.drawable.no_albumart)
+            .noFade()
+            .fit()
+            .into(binding.albumart)
         binding.title.text = title
         binding.subtitle.text = subtitle
         updateCounter++
@@ -172,38 +171,38 @@ abstract class EditorFragment : MvpAppCompatFragment(), EditorView {
 
     private fun animHideFab() {
         ViewCompat
-                .animate(binding.fab)
-                .scaleX(0.0f)
-                .scaleY(0.0f)
-                .alpha(0.0f)
-                .setInterpolator(FastOutSlowInInterpolator())
-                .withLayer()
-                .setListener(object : ViewPropertyAnimatorListener {
-                    override fun onAnimationStart(view: View) {
-                        isFabAnimated = true
-                    }
+            .animate(binding.fab)
+            .scaleX(0.0f)
+            .scaleY(0.0f)
+            .alpha(0.0f)
+            .setInterpolator(FastOutSlowInInterpolator())
+            .withLayer()
+            .setListener(object : ViewPropertyAnimatorListener {
+                override fun onAnimationStart(view: View) {
+                    isFabAnimated = true
+                }
 
-                    override fun onAnimationCancel(view: View) {
-                        isFabAnimated = false
-                    }
+                override fun onAnimationCancel(view: View) {
+                    isFabAnimated = false
+                }
 
-                    override fun onAnimationEnd(view: View) {
-                        isFabAnimated = false
-                        view.gone()
-                    }
-                }).start()
+                override fun onAnimationEnd(view: View) {
+                    isFabAnimated = false
+                    view.gone()
+                }
+            }).start()
     }
 
     private fun animShowFab() {
         binding.fab.show()
         ViewCompat
-                .animate(binding.fab)
-                .scaleX(1.0f)
-                .scaleY(1.0f)
-                .alpha(1.0f)
-                .setInterpolator(FastOutSlowInInterpolator())
-                .withLayer()
-                .setListener(null)
-                .start()
+            .animate(binding.fab)
+            .scaleX(1.0f)
+            .scaleY(1.0f)
+            .alpha(1.0f)
+            .setInterpolator(FastOutSlowInInterpolator())
+            .withLayer()
+            .setListener(null)
+            .start()
     }
 }

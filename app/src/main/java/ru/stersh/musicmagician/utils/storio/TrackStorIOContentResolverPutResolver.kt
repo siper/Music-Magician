@@ -4,22 +4,21 @@ import android.content.ContentValues
 import com.pushtorefresh.storio3.contentresolver.operations.put.DefaultPutResolver
 import com.pushtorefresh.storio3.contentresolver.queries.InsertQuery
 import com.pushtorefresh.storio3.contentresolver.queries.UpdateQuery
-import ru.stersh.musicmagician.data.core.entity.Track
 
 class TrackStorIOContentResolverPutResolver : DefaultPutResolver<ru.stersh.musicmagician.data.core.entity.Track>() {
 
     override fun mapToInsertQuery(`object`: ru.stersh.musicmagician.data.core.entity.Track): InsertQuery {
         return InsertQuery.builder()
-                .uri("content://media/external/audio/media")
-                .build()
+            .uri("content://media/external/audio/media")
+            .build()
     }
 
     override fun mapToUpdateQuery(`object`: ru.stersh.musicmagician.data.core.entity.Track): UpdateQuery {
         return UpdateQuery.builder()
-                .uri("content://media/external/audio/media")
-                .where("_id = ?")
-                .whereArgs(`object`.id)
-                .build()
+            .uri("content://media/external/audio/media")
+            .where("_id = ?")
+            .whereArgs(`object`.id)
+            .build()
     }
 
     override fun mapToContentValues(`object`: ru.stersh.musicmagician.data.core.entity.Track): ContentValues {

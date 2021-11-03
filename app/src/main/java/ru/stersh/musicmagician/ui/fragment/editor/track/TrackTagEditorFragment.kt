@@ -12,7 +12,6 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import org.koin.android.ext.android.inject
 import ru.stersh.musicmagician.databinding.FragmentTrackEditorBinding
-import ru.stersh.musicmagician.data.core.entity.Track
 import ru.stersh.musicmagician.model.data.repository.media.TrackRepository
 import ru.stersh.musicmagician.utils.android.EmptyTextWatcher
 import timber.log.Timber
@@ -116,44 +115,44 @@ class TrackTagEditorFragment : Fragment() {
 
     private fun refreshData() {
         repository
-                .getTrack(path)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        { track: ru.stersh.musicmagician.data.core.entity.Track ->
-                            this.track = track
-                            disableEditor()
-                            if (track.title != binding.trackEditorTitle.text.toString()) {
-                                binding.trackEditorTitle.setText(track.title)
-                            }
-                            if (track.artist != binding.trackEditorArtist.text.toString()) {
-                                binding.trackEditorArtist.setText(track.artist)
-                            }
-                            if (track.album != binding.trackEditorAlbum.text.toString()) {
-                                binding.trackEditorAlbum.setText(track.album)
-                            }
-                            if (track.comment != binding.trackEditorComment.text.toString()) {
-                                binding.trackEditorComment.setText(track.comment)
-                            }
-                            if (track.year != binding.trackEditorYear.text.toString()) {
-                                binding.trackEditorYear.setText(track.year)
-                            }
-                            if (track.trackNumber != binding.trackEditorTrackNumber.text.toString()) {
-                                binding.trackEditorTrackNumber.setText(track.trackNumber)
-                            }
-                            if (track.genre != binding.trackEditorGenre.text.toString()) {
-                                binding.trackEditorGenre.setText(track.genre)
-                            }
-                            if (track.lyrics != binding.trackEditorLyrics.text.toString()) {
-                                binding.trackEditorLyrics.setText(track.lyrics)
-                            }
-                            enableEditor()
-                        },
-                        {
-                            Timber.e(it)
-                        }
-                )
-                .addTo(lifecycle)
+            .getTrack(path)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { track: ru.stersh.musicmagician.data.core.entity.Track ->
+                    this.track = track
+                    disableEditor()
+                    if (track.title != binding.trackEditorTitle.text.toString()) {
+                        binding.trackEditorTitle.setText(track.title)
+                    }
+                    if (track.artist != binding.trackEditorArtist.text.toString()) {
+                        binding.trackEditorArtist.setText(track.artist)
+                    }
+                    if (track.album != binding.trackEditorAlbum.text.toString()) {
+                        binding.trackEditorAlbum.setText(track.album)
+                    }
+                    if (track.comment != binding.trackEditorComment.text.toString()) {
+                        binding.trackEditorComment.setText(track.comment)
+                    }
+                    if (track.year != binding.trackEditorYear.text.toString()) {
+                        binding.trackEditorYear.setText(track.year)
+                    }
+                    if (track.trackNumber != binding.trackEditorTrackNumber.text.toString()) {
+                        binding.trackEditorTrackNumber.setText(track.trackNumber)
+                    }
+                    if (track.genre != binding.trackEditorGenre.text.toString()) {
+                        binding.trackEditorGenre.setText(track.genre)
+                    }
+                    if (track.lyrics != binding.trackEditorLyrics.text.toString()) {
+                        binding.trackEditorLyrics.setText(track.lyrics)
+                    }
+                    enableEditor()
+                },
+                {
+                    Timber.e(it)
+                }
+            )
+            .addTo(lifecycle)
     }
 
     private fun enableEditor() = with(binding) {
@@ -167,7 +166,7 @@ class TrackTagEditorFragment : Fragment() {
         trackEditorLyrics.addTextChangedListener(lyricsTextWatcher)
     }
 
-    private fun disableEditor() = with(binding){
+    private fun disableEditor() = with(binding) {
         trackEditorTitle.removeTextChangedListener(titleTextWatcher)
         trackEditorAlbum.removeTextChangedListener(albumTextWatcher)
         trackEditorArtist.removeTextChangedListener(artistTextWatcher)

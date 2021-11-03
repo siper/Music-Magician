@@ -35,7 +35,7 @@ class MainActivity : BaseActivity(), MainView {
         setContentView(binding.root)
 
         binding.navView.setNavigationItemSelectedListener {
-             when(it.itemId) {
+            when (it.itemId) {
                 R.id.tracks -> {
                     presenter.trackLibrary()
                     true

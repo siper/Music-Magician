@@ -15,8 +15,8 @@ class PermissionsRepository(private val context: Context) {
     fun hasPermission(permission: String): Observable<Boolean> {
         checkPermission(permission)
         return permissions
-                .filter { it.contains(permission) }
-                .map { it[permission] }
+            .filter { it.contains(permission) }
+            .map { it[permission] }
     }
 
     fun request(vararg permission: String) {

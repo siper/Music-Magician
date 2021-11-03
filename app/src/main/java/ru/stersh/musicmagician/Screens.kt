@@ -3,11 +3,11 @@ package ru.stersh.musicmagician
 import android.content.Intent
 import com.github.terrakok.cicerone.androidx.ActivityScreen
 import com.github.terrakok.cicerone.androidx.FragmentScreen
+import ru.stersh.musicmagician.feature.library.album.AlbumLibraryFragment
+import ru.stersh.musicmagician.feature.library.track.TrackLibraryFragment
 import ru.stersh.musicmagician.ui.fragment.PrivacyPolicyFragment
 import ru.stersh.musicmagician.ui.fragment.editor.album.AlbumEditorFragment
 import ru.stersh.musicmagician.ui.fragment.editor.track.TrackEditorFragment
-import ru.stersh.musicmagician.feature.library.album.AlbumLibraryFragment
-import ru.stersh.musicmagician.feature.library.track.TrackLibraryFragment
 
 object Screens {
     fun trackLibraryScreen() = FragmentScreen {

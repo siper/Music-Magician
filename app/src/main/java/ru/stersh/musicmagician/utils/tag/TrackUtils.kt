@@ -12,7 +12,6 @@ import org.jaudiotagger.tag.id3.valuepair.ImageFormats
 import org.jaudiotagger.tag.images.ArtworkFactory
 import org.jaudiotagger.tag.mp4.Mp4Tag
 import org.jaudiotagger.tag.reference.PictureTypes
-import ru.stersh.musicmagician.data.core.entity.Track
 import timber.log.Timber
 import java.io.File
 import java.io.IOException
@@ -85,10 +84,14 @@ object TrackUtils {
                 val imageFile = RandomAccessFile(coverFile, "r")
                 val imagedata = ByteArray(imageFile.length().toInt())
                 imageFile.read(imagedata)
-                tag.setField(tag.createArtworkField(imagedata,
+                tag.setField(
+                    tag.createArtworkField(
+                        imagedata,
                         PictureTypes.DEFAULT_ID,
                         ImageFormats.MIME_TYPE_JPG,
-                        "coverart", 400, 400, 24, 0))
+                        "coverart", 400, 400, 24, 0
+                    )
+                )
             } catch (e: IOException) {
                 Timber.d("Error setting albumart")
             } catch (e: FieldDataInvalidException) {

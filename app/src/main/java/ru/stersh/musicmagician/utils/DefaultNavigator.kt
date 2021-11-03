@@ -7,9 +7,9 @@ import com.github.terrakok.cicerone.Command
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 import ru.stersh.musicmagician.extention.hideKeyboard
+import ru.stersh.musicmagician.feature.library.core.LibraryFragment
 import ru.stersh.musicmagician.ui.activity.MainActivity
 import ru.stersh.musicmagician.ui.fragment.editor.EditorFragment
-import ru.stersh.musicmagician.feature.library.core.LibraryFragment
 
 class DefaultNavigator(
     private val main: MainActivity, container: Int

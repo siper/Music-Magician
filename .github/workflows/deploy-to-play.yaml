@@ -45,7 +45,7 @@ jobs:
       - name: Create Whats New
         id: createWhatsnew
         run: mkdir whatsnew
-     
+
       - name: Deploy to Play Store (BETA)
         id: deploy
         uses: r0adkll/upload-google-play@v1

@@ -12,7 +12,6 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import org.koin.android.ext.android.inject
 import ru.stersh.musicmagician.databinding.FragmentAlbumEditorBinding
-import ru.stersh.musicmagician.data.core.entity.Album
 import ru.stersh.musicmagician.model.data.repository.media.AlbumRepository
 import ru.stersh.musicmagician.utils.android.EmptyTextWatcher
 import timber.log.Timber
@@ -80,29 +79,29 @@ class AlbumTagEditorFragment : Fragment() {
 
     private fun refreshData() {
         repository
-                .getAlbum(albumId)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        { album: ru.stersh.musicmagician.data.core.entity.Album ->
-                            this.album = album
-                            disableEditor()
-                            if (binding.albumEditorTitle.text.toString() != album.title) {
-                                binding.albumEditorTitle.setText(album.title)
-                            }
-                            if (binding.albumEditorArtist.text.toString() != album.artist) {
-                                binding.albumEditorArtist.setText(album.artist)
-                            }
-                            if (binding.albumEditorYear.text.toString() != album.year) {
-                                binding.albumEditorYear.setText(album.year)
-                            }
-                            enableEditor()
-                        },
-                        {
-                            Timber.e(it)
-                        }
-                )
-                .addTo(lifecycle)
+            .getAlbum(albumId)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { album: ru.stersh.musicmagician.data.core.entity.Album ->
+                    this.album = album
+                    disableEditor()
+                    if (binding.albumEditorTitle.text.toString() != album.title) {
+                        binding.albumEditorTitle.setText(album.title)
+                    }
+                    if (binding.albumEditorArtist.text.toString() != album.artist) {
+                        binding.albumEditorArtist.setText(album.artist)
+                    }
+                    if (binding.albumEditorYear.text.toString() != album.year) {
+                        binding.albumEditorYear.setText(album.year)
+                    }
+                    enableEditor()
+                },
+                {
+                    Timber.e(it)
+                }
+            )
+            .addTo(lifecycle)
     }
 
     private fun enableEditor() {

@@ -33,7 +33,8 @@
         android:orientation="vertical"
         android:layout_gravity="center"
         android:layout_marginEnd="@dimen/default_margin"
-        android:layout_weight="1" >
+        android:layout_weight="1">
+
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
@@ -42,8 +43,8 @@
             android:maxLines="1"
             android:ellipsize="end"
             android:textSize="@dimen/primary_text_list_size"
-            android:textColor="@color/text_primary">
-        </TextView>
+            android:textColor="@color/text_primary"></TextView>
+
         <TextView
             android:id="@+id/artist"
             android:layout_width="wrap_content"
@@ -52,7 +53,6 @@
             android:maxLines="1"
             android:ellipsize="end"
             android:textSize="@dimen/secondary_text_list_size"
-            android:textColor="@color/text_secondary">
-        </TextView>
+            android:textColor="@color/text_secondary"></TextView>
     </LinearLayout>
 </LinearLayout>

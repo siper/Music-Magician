@@ -5,11 +5,14 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 
 val cajunLyricsModule = module {
-    single(named("cajunlyrics")) {
+    single(named(API_NAME)) {
         Retrofit.Builder()
             .client(get())
             .baseUrl("http://api.cajunlyrics.com/")
             .build()
     }
-    single { get<Retrofit>(named("cajunlyrics")).create(CajunlyricsApi::class.java) }
+    single { get<Retrofit>(named(API_NAME)).create(CajunlyricsApi::class.java) }
+    single { CajunlyricsRepository(get(named(API_NAME))) }
 }
+
+internal const val API_NAME = "cajunlyrics"

@@ -8,8 +8,8 @@ import ru.stersh.musicmagician.ui.view.WrapViewPager
 
 
 class PagerAdapter(
-        val fragments: List<Fragment>,
-        fragmentManager: FragmentManager
+    val fragments: List<Fragment>,
+    fragmentManager: FragmentManager
 ) : FragmentPagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
     private var mCurrentPosition = -1
 

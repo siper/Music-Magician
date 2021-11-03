@@ -10,5 +10,6 @@ sealed class UiItem {
         val albumArt: Uri,
         val year: String
     ) : UiItem()
+
     object Progress : UiItem()
 }

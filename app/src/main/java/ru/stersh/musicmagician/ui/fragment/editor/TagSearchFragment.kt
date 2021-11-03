@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import moxy.MvpAppCompatFragment
-import ru.stersh.musicmagician.databinding.FragmentTagSearchBinding
 import ru.stersh.musicmagician.data.server.core.entity.Tag
 import ru.stersh.musicmagician.data.server.core.entity.TagEntity
+import ru.stersh.musicmagician.databinding.FragmentTagSearchBinding
 import ru.stersh.musicmagician.entity.tag.TagProgressItem
 import ru.stersh.musicmagician.extention.gone
 import ru.stersh.musicmagician.extention.show
