@@ -23,7 +23,7 @@
 //    private val downloader: FileDownloader,
 //    private val id: Long
 //) : BasePresenter<TagSearchView>() {
-//    private lateinit var album: ru.stersh.musicmagician.data.core.entity.Album
+//    private lateinit var album: Album
 //    private var isUpdates = false
 //
 //    override fun onFirstViewAttach() {
@@ -74,7 +74,7 @@
 //        }
 //    }
 //
-//    private fun search(album: ru.stersh.musicmagician.data.core.entity.Album) {
+//    private fun search(album: Album) {
 //        interactor
 //            .searchTags(album.title, album.artist)
 //            .subscribeOn(Schedulers.io())

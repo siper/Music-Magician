@@ -4,13 +4,13 @@
 //import com.pushtorefresh.storio3.contentresolver.StorIOContentResolver
 //import com.pushtorefresh.storio3.contentresolver.operations.get.DefaultGetResolver
 //
-//class AlbumStorIOContentResolverGetResolver : DefaultGetResolver<ru.stersh.musicmagician.data.core.entity.Album>() {
+//class AlbumStorIOContentResolverGetResolver : DefaultGetResolver<Album>() {
 //
 //    override fun mapFromCursor(
 //        storIOContentResolver: StorIOContentResolver,
 //        cursor: Cursor
-//    ): ru.stersh.musicmagician.data.core.entity.Album {
-//        return ru.stersh.musicmagician.data.core.entity.Album(
+//    ): Album {
+//        return Album(
 //            id = cursor.getLong(cursor.getColumnIndex("_id")),
 //            title = cursor.getString(cursor.getColumnIndex("album")).orEmpty(),
 //            artist = cursor.getString(cursor.getColumnIndex("artist")).orEmpty(),

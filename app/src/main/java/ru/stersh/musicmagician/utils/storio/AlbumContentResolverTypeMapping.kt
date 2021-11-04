@@ -2,7 +2,7 @@
 //
 //import com.pushtorefresh.storio3.contentresolver.ContentResolverTypeMapping
 //
-//class AlbumContentResolverTypeMapping : ContentResolverTypeMapping<ru.stersh.musicmagician.data.core.entity.Album?>(
+//class AlbumContentResolverTypeMapping : ContentResolverTypeMapping<Album?>(
 //    AlbumStorIOContentResolverPutResolver(),
 //    AlbumStorIOContentResolverGetResolver(),
 //    AlbumStorIOContentResolverDeleteResolver()

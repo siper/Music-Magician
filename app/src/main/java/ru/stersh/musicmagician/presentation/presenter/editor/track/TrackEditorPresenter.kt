@@ -16,7 +16,7 @@
 //    private val router: Router,
 //    private val path: String
 //) : BasePresenter<EditorView>() {
-//    private var track: ru.stersh.musicmagician.data.core.entity.Track? = null
+//    private var track: Track? = null
 //
 //    override fun onFirstViewAttach() {
 //        super.onFirstViewAttach()

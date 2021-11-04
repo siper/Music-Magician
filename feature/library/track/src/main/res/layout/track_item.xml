@@ -7,12 +7,13 @@
     android:orientation="horizontal"
     android:background="?android:attr/selectableItemBackground">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:backgroundTint="@color/md_grey_200"
         app:cardCornerRadius="8dp"
         app:cardElevation="0dp"
+        app:strokeWidth="0dp"
         android:layout_gravity="center_vertical"
         android:layout_marginTop="@dimen/small_margin"
         android:layout_marginBottom="@dimen/small_margin"
@@ -25,7 +26,7 @@
             android:layout_width="@dimen/default_albumart_list_size"
             android:layout_height="@dimen/default_albumart_list_size"
             android:src="@drawable/no_albumart" />
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
     <LinearLayout
         android:layout_width="0dp"
@@ -35,17 +36,18 @@
         android:layout_marginEnd="@dimen/default_margin"
         android:layout_weight="1">
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
+            style="?textAppearanceTitleLarge"
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/tag_title"
             android:maxLines="1"
             android:ellipsize="end"
-            android:textSize="@dimen/primary_text_list_size"
-            android:textColor="@color/text_primary"></TextView>
+            android:textColor="@color/text_primary"/>
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
+            style="?textAppearanceTitleMedium"
             android:id="@+id/artist"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -53,6 +55,6 @@
             android:maxLines="1"
             android:ellipsize="end"
             android:textSize="@dimen/secondary_text_list_size"
-            android:textColor="@color/text_secondary"></TextView>
+            android:textColor="@color/text_secondary"/>
     </LinearLayout>
 </LinearLayout>

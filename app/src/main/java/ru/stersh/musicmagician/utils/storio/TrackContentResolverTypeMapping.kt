@@ -2,7 +2,7 @@
 //
 //import com.pushtorefresh.storio3.contentresolver.ContentResolverTypeMapping
 //
-//class TrackContentResolverTypeMapping : ContentResolverTypeMapping<ru.stersh.musicmagician.data.core.entity.Track?>(
+//class TrackContentResolverTypeMapping : ContentResolverTypeMapping<Track?>(
 //    TrackStorIOContentResolverPutResolver(),
 //    TrackStorIOContentResolverGetResolver(),
 //    TrackStorIOContentResolverDeleteResolver()

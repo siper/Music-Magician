@@ -3,17 +3,18 @@ package ru.stersh.musicmagician
 import android.content.Intent
 import com.github.terrakok.cicerone.androidx.ActivityScreen
 import com.github.terrakok.cicerone.androidx.FragmentScreen
+import ru.stersh.musicmagician.feature.library.album.ui.AlbumLibraryFragment
 import ru.stersh.musicmagician.feature.library.track.ui.TrackLibraryFragment
-import ru.stersh.musicmagician.ui.fragment.PrivacyPolicyFragment
+import ru.stersh.musicmagician.feature.privacypolicy.PrivacyPolicyFragment
 
 object Screens {
     fun trackLibraryScreen() = FragmentScreen {
         TrackLibraryFragment()
     }
 
-//    fun albumLibraryScreen() = FragmentScreen {
-//        //ru.stersh.musicmagician.feature.library.album.AlbumLibraryFragment()
-//    }
+    fun albumLibraryScreen() = FragmentScreen {
+        AlbumLibraryFragment()
+    }
 
     fun piracyPolicy() = FragmentScreen {
         PrivacyPolicyFragment()
@@ -25,11 +26,11 @@ object Screens {
         }
     }
 
-//    fun albumEditor(album: ru.stersh.musicmagician.data.core.entity.Album) = FragmentScreen {
+//    fun albumEditor(album: Album) = FragmentScreen {
 //        AlbumEditorFragment.edit(album.id)
 //    }
 //
-//    fun trackEditor(track: ru.stersh.musicmagician.data.core.entity.Track) = FragmentScreen {
+//    fun trackEditor(track: Track) = FragmentScreen {
 //        TrackEditorFragment.edit(track)
 //    }
 

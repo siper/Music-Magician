@@ -37,8 +37,7 @@ val tempAlbumart: String
 val albumartUri: Uri
     get() = Uri.parse("content://media/external/audio/albumart")
 
-val translateUrl: Uri
-    get() = Uri.parse("https://stersh.oneskyapp.com/collaboration/project?id=351498")
+val translateUrl: Uri = Uri.parse("https://stersh.oneskyapp.com/collaboration/project?id=351498")
 
 val feedbackEmail: String
     get() = "musicmagician@stersh.ru"

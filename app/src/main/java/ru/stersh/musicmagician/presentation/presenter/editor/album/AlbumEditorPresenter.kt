@@ -16,7 +16,7 @@
 //    private val router: Router,
 //    private val id: Long
 //) : BasePresenter<EditorView>() {
-//    private var album: ru.stersh.musicmagician.data.core.entity.Album? = null
+//    private var album: Album? = null
 //
 //    override fun onFirstViewAttach() {
 //        super.onFirstViewAttach()

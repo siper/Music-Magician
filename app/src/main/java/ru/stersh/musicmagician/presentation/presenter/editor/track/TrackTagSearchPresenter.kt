@@ -5,7 +5,7 @@
 //import io.reactivex.rxkotlin.subscribeBy
 //import io.reactivex.schedulers.Schedulers
 //import moxy.InjectViewState
-//import ru.stersh.musicmagician.data.core.TrackRepository
+//import TrackRepository
 //import ru.stersh.musicmagician.data.server.core.entity.LyricsTag
 //import ru.stersh.musicmagician.data.server.core.entity.Tag
 //import ru.stersh.musicmagician.data.server.core.entity.TagEntity
@@ -24,7 +24,7 @@
 //    private val downloader: FileDownloader,
 //    private val path: String
 //) : BasePresenter<TagSearchView>() {
-//    private lateinit var track: ru.stersh.musicmagician.data.core.entity.Track
+//    private lateinit var track: Track
 //    private var isUpdates = false
 //
 //    override fun onFirstViewAttach() {
@@ -83,7 +83,7 @@
 //        }
 //    }
 //
-//    private fun search(track: ru.stersh.musicmagician.data.core.entity.Track) {
+//    private fun search(track: Track) {
 //        interactor
 //            .searchTags(track.title, track.artist)
 //            .subscribeOn(Schedulers.io())

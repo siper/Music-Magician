@@ -8,7 +8,7 @@ import coil.load
 import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegate
 import ru.stersh.musicmagician.feature.library.track.R
-import ru.stersh.musicmagician.feature.library.track.entity.UiItem
+import ru.stersh.musicmagician.feature.library.track.ui.entity.UiItem
 
 class TrackLibraryAdapter(
     callback: (UiItem.UiTrack, ImageView) -> Unit

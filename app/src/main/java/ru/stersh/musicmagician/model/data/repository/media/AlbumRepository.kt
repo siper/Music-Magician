@@ -8,8 +8,8 @@
 //import io.reactivex.Flowable
 //import io.reactivex.Observable
 //import io.reactivex.subjects.BehaviorSubject
-//import ru.stersh.musicmagician.data.core.entity.Album
-//import ru.stersh.musicmagician.data.core.entity.Track
+//import Album
+//import Track
 //import ru.stersh.musicmagician.tempAlbumart
 //import ru.stersh.musicmagician.utils.tag.AlbumartUtils
 //import ru.stersh.musicmagician.utils.tag.TrackUtils
@@ -17,13 +17,13 @@
 //import java.io.File
 //
 //class AlbumRepository(private val storIOContentResolver: StorIOContentResolver) {
-//    private val cache: MutableMap<Long, BehaviorSubject<ru.stersh.musicmagician.data.core.entity.Album>> = mutableMapOf()
+//    private val cache: MutableMap<Long, BehaviorSubject<Album>> = mutableMapOf()
 //
-//    fun getAlbums(): Flowable<List<ru.stersh.musicmagician.data.core.entity.Album>> {
+//    fun getAlbums(): Flowable<List<Album>> {
 //        val whereCause = MediaStore.Audio.Albums.ARTIST + " != ?"
 //        return storIOContentResolver
 //                .get()
-//                .listOfObjects(ru.stersh.musicmagician.data.core.entity.Album::class.java)
+//                .listOfObjects(Album::class.java)
 //                .withQuery(Query.builder()
 //                        .uri(MediaStore.Audio.Albums.EXTERNAL_CONTENT_URI)
 //                        .where(whereCause)
@@ -33,11 +33,11 @@
 //                .asRxFlowable(BackpressureStrategy.BUFFER)
 //    }
 //
-//    fun getAlbum(albumId: Long): Observable<ru.stersh.musicmagician.data.core.entity.Album> {
+//    fun getAlbum(albumId: Long): Observable<Album> {
 //        if (!cache.contains(albumId) || cache[albumId] == null) {
 //            val album = storIOContentResolver
 //                    .get()
-//                    .`object`(ru.stersh.musicmagician.data.core.entity.Album::class.java)
+//                    .`object`(Album::class.java)
 //                    .withQuery(
 //                            Query
 //                                    .builder()
@@ -55,14 +55,14 @@
 //                cache[albumId] = BehaviorSubject.createDefault(album)
 //            }
 //        }
-//        return cache[albumId] as Observable<ru.stersh.musicmagician.data.core.entity.Album>
+//        return cache[albumId] as Observable<Album>
 //    }
 //
-//    fun updateAlbum(album: ru.stersh.musicmagician.data.core.entity.Album?) {
+//    fun updateAlbum(album: Album?) {
 //        cache[album!!.id]?.onNext(album)
 //    }
 //
-//    fun clearCache(album: ru.stersh.musicmagician.data.core.entity.Album?) {
+//    fun clearCache(album: Album?) {
 //        if (album != null) {
 //            val cover = File(tempAlbumart)
 //            if (cover.exists()) cover.delete()
@@ -70,12 +70,12 @@
 //        }
 //    }
 //
-//    fun save(album: ru.stersh.musicmagician.data.core.entity.Album?): Completable {
+//    fun save(album: Album?): Completable {
 //        return Completable.fromCallable {
 //            val whereCause = "album_id = ?"
-//            val tracks: MutableList<ru.stersh.musicmagician.data.core.entity.Track>? = storIOContentResolver
+//            val tracks: MutableList<Track>? = storIOContentResolver
 //                    .get()
-//                    .listOfObjects(ru.stersh.musicmagician.data.core.entity.Track::class.java)
+//                    .listOfObjects(Track::class.java)
 //                    .withQuery(
 //                            Query
 //                                    .builder()
@@ -112,9 +112,9 @@
 //                        .executeAsBlocking()
 //                val path = editedTracks[0].path
 //                Timber.d("Get new track")
-//                val track: ru.stersh.musicmagician.data.core.entity.Track? = storIOContentResolver
+//                val track: Track? = storIOContentResolver
 //                        .get()
-//                        .`object`(ru.stersh.musicmagician.data.core.entity.Track::class.java)
+//                        .`object`(Track::class.java)
 //                        .withQuery(
 //                                Query
 //                                        .builder()

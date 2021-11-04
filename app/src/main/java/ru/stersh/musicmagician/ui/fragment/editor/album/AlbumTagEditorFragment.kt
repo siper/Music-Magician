@@ -20,7 +20,7 @@
 //    private val lifecycle = CompositeDisposable()
 //    private val repository by inject<AlbumRepository>()
 //    private val albumId by lazy { requireArguments().getLong(AlbumEditorFragment.ALBUM_ID) }
-//    private var album: ru.stersh.musicmagician.data.core.entity.Album? = null
+//    private var album: Album? = null
 //
 //    private val titleTextWatcher: EmptyTextWatcher = object : EmptyTextWatcher() {
 //        override fun afterTextChanged(s: Editable?) {
@@ -83,7 +83,7 @@
 //            .subscribeOn(Schedulers.io())
 //            .observeOn(AndroidSchedulers.mainThread())
 //            .subscribe(
-//                { album: ru.stersh.musicmagician.data.core.entity.Album ->
+//                { album: Album ->
 //                    this.album = album
 //                    disableEditor()
 //                    if (binding.albumEditorTitle.text.toString() != album.title) {

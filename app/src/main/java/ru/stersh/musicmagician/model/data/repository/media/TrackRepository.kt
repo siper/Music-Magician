@@ -13,8 +13,8 @@
 //import kotlinx.coroutines.flow.Flow
 //import org.jaudiotagger.audio.AudioFileIO
 //import org.jaudiotagger.tag.FieldKey
-//import ru.stersh.musicmagician.data.core.entity.Album
-//import ru.stersh.musicmagician.data.core.entity.Track
+//import Album
+//import Track
 //import ru.stersh.musicmagician.extention.getFieldOrEmpty
 //import ru.stersh.musicmagician.tempAlbumart
 //import ru.stersh.musicmagician.utils.tag.AlbumartUtils
@@ -25,16 +25,16 @@
 //class TrackRepository(
 //    private val storIOContentResolver: StorIOContentResolver
 //) {
-//    private val cache: MutableMap<String, BehaviorSubject<ru.stersh.musicmagician.data.core.entity.Track>> = mutableMapOf()
+//    private val cache: MutableMap<String, BehaviorSubject<Track>> = mutableMapOf()
 //
-//    fun getTracks(hideShortTracks: Boolean = true): Flow<List<ru.stersh.musicmagician.data.core.entity.Track>> {
+//    fun getTracks(hideShortTracks: Boolean = true): Flow<List<Track>> {
 //        var whereCause = MediaStore.Audio.Media.IS_MUSIC + " != 0"
 //        if (hideShortTracks) {
 //            whereCause += " AND duration > 30000"
 //        }
 //        val tracks = storIOContentResolver
 //            .get()
-//            .listOfObjects(ru.stersh.musicmagician.data.core.entity.Track::class.java)
+//            .listOfObjects(Track::class.java)
 //            .withQuery(
 //                Query.builder()
 //                    .uri(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI)
@@ -53,12 +53,12 @@
 //
 //    fun getTrack(path: String) = getTrack(File(path))
 //
-//    fun getTrack(file: File): Observable<ru.stersh.musicmagician.data.core.entity.Track> {
+//    fun getTrack(file: File): Observable<Track> {
 //        val path = file.absolutePath
 //        if (!cache.containsKey(path) || cache[path] == null) {
 //            val mp3File = AudioFileIO.read(file)
 //            val tag = mp3File.tag
-//            val track = ru.stersh.musicmagician.data.core.entity.Track(
+//            val track = Track(
 //                path = file.absolutePath,
 //                title = if (tag.hasField(FieldKey.TITLE)) {
 //                    tag.getFirst(FieldKey.TITLE)
@@ -88,14 +88,14 @@
 //            )
 //            cache[path] = BehaviorSubject.createDefault(track)
 //        }
-//        return cache[path] as Observable<ru.stersh.musicmagician.data.core.entity.Track>
+//        return cache[path] as Observable<Track>
 //    }
 //
-//    fun updateTrack(track: ru.stersh.musicmagician.data.core.entity.Track) {
+//    fun updateTrack(track: Track) {
 //        cache[track.path]?.onNext(track)
 //    }
 //
-//    fun clearCache(track: ru.stersh.musicmagician.data.core.entity.Track?) {
+//    fun clearCache(track: Track?) {
 //        if (track == null) return
 //
 //        if (track.albumart.isNotEmpty()) {
@@ -105,7 +105,7 @@
 //        cache.remove(track.path)
 //    }
 //
-//    fun save(track: ru.stersh.musicmagician.data.core.entity.Track?): Completable {
+//    fun save(track: Track?): Completable {
 //        return Completable.fromCallable {
 //            if (track == null) return@fromCallable null
 //            TrackUtils.save(track)
@@ -115,7 +115,7 @@
 //            try {
 //                val oldTrack = storIOContentResolver
 //                    .get()
-//                    .`object`(ru.stersh.musicmagician.data.core.entity.Track::class.java)
+//                    .`object`(Track::class.java)
 //                    .withQuery(
 //                        Query
 //                            .builder()
@@ -142,7 +142,7 @@
 //                        .executeAsBlocking()
 //                    val newTrack = storIOContentResolver
 //                        .get()
-//                        .`object`(ru.stersh.musicmagician.data.core.entity.Track::class.java)
+//                        .`object`(Track::class.java)
 //                        .withQuery(
 //                            Query
 //                                .builder()
@@ -164,10 +164,10 @@
 //        }
 //    }
 //
-//    private fun getAlbums(): Flowable<List<ru.stersh.musicmagician.data.core.entity.Album>> {
+//    private fun getAlbums(): Flowable<List<Album>> {
 //        return storIOContentResolver
 //            .get()
-//            .listOfObjects(ru.stersh.musicmagician.data.core.entity.Album::class.java)
+//            .listOfObjects(Album::class.java)
 //            .withQuery(
 //                Query
 //                    .builder()

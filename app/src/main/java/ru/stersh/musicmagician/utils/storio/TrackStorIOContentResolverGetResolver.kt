@@ -6,14 +6,14 @@
 //import com.pushtorefresh.storio3.contentresolver.StorIOContentResolver
 //import com.pushtorefresh.storio3.contentresolver.operations.get.DefaultGetResolver
 //
-//class TrackStorIOContentResolverGetResolver : DefaultGetResolver<ru.stersh.musicmagician.data.core.entity.Track>() {
+//class TrackStorIOContentResolverGetResolver : DefaultGetResolver<Track>() {
 //
 //    override fun mapFromCursor(
 //        storIOContentResolver: StorIOContentResolver,
 //        cursor: Cursor
-//    ): ru.stersh.musicmagician.data.core.entity.Track {
+//    ): Track {
 //        val trackId = cursor.getLong(cursor.getColumnIndex("_id"))
-//        return ru.stersh.musicmagician.data.core.entity.Track(
+//        return Track(
 //            id = trackId,
 //            //path = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DATA)),
 //            uri = ContentUris.withAppendedId(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, trackId),

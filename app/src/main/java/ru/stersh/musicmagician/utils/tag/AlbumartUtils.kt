@@ -22,7 +22,7 @@ object AlbumartUtils {
     fun delete(id: Long) {
 //        val albumart = storIOContentResolver
 //            .get()
-//            .`object`(ru.stersh.musicmagician.data.core.entity.Albumart::class.java)
+//            .`object`(Albumart::class.java)
 //            .withQuery(
 //                Query
 //                    .builder()

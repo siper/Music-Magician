@@ -1,7 +1,7 @@
 package ru.stersh.musicmagician.feature.library.track.domain
 
 import kotlinx.coroutines.flow.Flow
-import ru.stersh.musicmagician.feature.library.core.LibraryInteractor
+import ru.stersh.musicmagician.feature.library.core.domain.LibraryInteractor
 import ru.stersh.musicmagician.feature.library.track.data.library.LibraryTrack
 import ru.stersh.musicmagician.feature.library.track.data.library.TrackLibraryRepository
 import ru.stersh.musicmagician.feature.library.track.data.sortorder.TrackSortOrder
@@ -26,12 +26,8 @@ class TrackLibraryInteractor(
             TrackSortOrder.ZA_TITLE -> Comparator { o1, o2 -> o2.title.compareTo(o1.title) }
             TrackSortOrder.AZ_ARTIST -> Comparator { o1, o2 -> o1.artist.compareTo(o2.artist) }
             TrackSortOrder.ZA_ARTIST -> Comparator { o1, o2 -> o2.artist.compareTo(o1.artist) }
-            TrackSortOrder.OLDEST -> Comparator { o1, o2 ->
-                o1.dateAdded.toString().compareTo(o2.dateAdded.toString())
-            }
-            TrackSortOrder.NEWEST -> Comparator { o1, o2 ->
-                o2.dateAdded.toString().compareTo(o1.dateAdded.toString())
-            }
+            TrackSortOrder.OLDEST -> Comparator { o1, o2 -> o1.dateAdded.compareTo(o2.dateAdded) }
+            TrackSortOrder.NEWEST -> Comparator { o1, o2 -> o2.dateAdded.compareTo(o1.dateAdded) }
         }
     }
 

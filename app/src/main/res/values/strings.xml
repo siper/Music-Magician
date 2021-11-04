@@ -51,7 +51,6 @@
     <string name="file_copy_error">File copy error</string>
     <string name="no_results_found">No results found! Edit tags and try again!</string>
     <string name="album_not_found">Album not found or no longer available!</string>
-    <string name="privacy_policy">Privacy policy</string>
     <string name="apply_tags">Apply tags</string>
     <string name="editor_title">Editor</string>
     <string name="permissions_error_title">No permissions granted</string>

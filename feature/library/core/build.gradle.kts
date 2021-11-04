@@ -3,8 +3,9 @@ plugins {
 }
 
 dependencies {
-    api(project(":data:local:core"))
-    api(project(":ui"))
+    api(project(":core:data:local:core"))
+    api(project(":core:ui"))
+    api(project(":core:navigation"))
     api(libs.shimmer)
     api(libs.cicerone)
     api(libs.coil.core)

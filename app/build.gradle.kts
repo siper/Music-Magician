@@ -48,10 +48,14 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    implementation(project(":ui"))
+    implementation(project(":core:ui"))
+    implementation(project(":core:navigation"))
+    implementation(project(":core:data:local:core"))
+    implementation(project(":core:data:local:mediastore"))
+
     implementation(project(":feature:library:track"))
-    implementation(project(":data:local:core"))
-    implementation(project(":data:local:mediastore"))
+    implementation(project(":feature:library:album"))
+    implementation(project(":feature:privacypolicy"))
 
     // Shimmer layout
     implementation(libs.shimmer)
@@ -100,10 +104,6 @@ dependencies {
 
     // Cicerone
     implementation(libs.cicerone)
-
-    // Calligraphy 3
-    implementation("io.github.inflationx:calligraphy3:3.1.1")
-    implementation("io.github.inflationx:viewpump:2.0.3")
 
     // Leak Canary
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.7")

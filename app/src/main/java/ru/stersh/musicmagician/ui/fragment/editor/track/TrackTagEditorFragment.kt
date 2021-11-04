@@ -21,7 +21,7 @@
 //    private val path: String by lazy { requireArguments().getString(PATH_KEY)!! }
 //
 //    private val lifecycle = CompositeDisposable()
-//    private var track: ru.stersh.musicmagician.data.core.entity.Track? = null
+//    private var track: Track? = null
 //
 //    private val titleTextWatcher: EmptyTextWatcher = object : EmptyTextWatcher() {
 //        override fun afterTextChanged(s: Editable?) {
@@ -119,7 +119,7 @@
 //            .subscribeOn(Schedulers.io())
 //            .observeOn(AndroidSchedulers.mainThread())
 //            .subscribe(
-//                { track: ru.stersh.musicmagician.data.core.entity.Track ->
+//                { track: Track ->
 //                    this.track = track
 //                    disableEditor()
 //                    if (track.title != binding.trackEditorTitle.text.toString()) {

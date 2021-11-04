@@ -9,12 +9,13 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.component.KoinComponent
 import org.koin.dsl.module
 import ru.stersh.musicmagician.data.mediastore.mediastoreDataModule
+import ru.stersh.musicmagician.feature.library.album.albumLibraryModule
 import ru.stersh.musicmagician.feature.library.track.trackLibraryModule
 import ru.stersh.musicmagician.utils.FileDownloader
 
 object Di : KoinComponent {
     val modules by lazy {
-        listOf(android, utils, network, navigation, mediastoreDataModule, trackLibraryModule)
+        listOf(android, utils, network, navigation, mediastoreDataModule, trackLibraryModule, albumLibraryModule)
     }
 
     private val android = module {

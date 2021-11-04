@@ -34,7 +34,7 @@
 //
 //    companion object {
 //        private const val PATH_KEY = "path"
-//        fun edit(track: ru.stersh.musicmagician.data.core.entity.Track): TrackEditorFragment {
+//        fun edit(track: Track): TrackEditorFragment {
 //            val bundle = Bundle().apply {
 //                putString(PATH_KEY, track.path)
 //            }
