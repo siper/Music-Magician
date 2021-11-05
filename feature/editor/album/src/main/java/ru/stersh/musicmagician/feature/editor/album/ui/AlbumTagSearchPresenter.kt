@@ -1,4 +1,4 @@
-ackage ru.stersh.musicmagician.feature.editor.album.ui//package ru.stersh.musicmagician.presentation.presenter.editor.album
+//package ru.stersh.musicmagician.presentation.presenter.editor.album
 //
 //import io.reactivex.android.schedulers.AndroidSchedulers
 //import io.reactivex.rxkotlin.addTo

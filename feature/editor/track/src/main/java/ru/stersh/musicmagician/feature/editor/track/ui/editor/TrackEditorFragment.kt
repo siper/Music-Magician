@@ -1,4 +1,4 @@
-package ru.stersh.musicmagician.feature.editor.track.ui.editor//package ru.stersh.musicmagician.ui.fragment.editor.track
+package ru.stersh.musicmagician.feature.editor.track.ui.editor
 
 import android.os.Bundle
 import android.view.View

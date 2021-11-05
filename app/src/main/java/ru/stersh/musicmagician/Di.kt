@@ -3,14 +3,15 @@ package ru.stersh.musicmagician
 import androidx.preference.PreferenceManager
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.Router
-import com.google.gson.Gson
+import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.component.KoinComponent
+import org.koin.core.module.Module
 import org.koin.dsl.bind
 import org.koin.dsl.module
+import ru.stersh.musicmagician.core.data.server.mediator.mediatorRepositoryModules
 import ru.stersh.musicmagician.data.mediastore.mediaStoreDataModule
-import ru.stersh.musicmagician.data.server.mediator.mediatorRepositoryModule
 import ru.stersh.musicmagician.feature.editor.track.trackEditorModule
 import ru.stersh.musicmagician.feature.library.album.albumLibraryModule
 import ru.stersh.musicmagician.feature.library.track.navigation.TrackLibraryNavigation
@@ -20,19 +21,18 @@ import ru.stersh.musicmagician.utils.FileDownloader
 import ru.stersh.nusicmagician.core.data.local.jaudiotagger.jAudioTaggerRepositoryModule
 
 object Di : KoinComponent {
-    val modules by lazy {
+    val modules: List<Module> by lazy {
         listOf(
             android,
             utils,
             network,
             navigation,
-            mediatorRepositoryModule,
             mediaStoreDataModule,
             jAudioTaggerRepositoryModule,
             trackLibraryModule,
             albumLibraryModule,
             trackEditorModule
-        )
+        ) + mediatorRepositoryModules
     }
 
     private val android = module {
@@ -48,7 +48,7 @@ object Di : KoinComponent {
     }
 
     private val utils = module {
-        single { Gson() }
+        single { Moshi.Builder().build() }
         single { FileDownloader(get()) }
     }
 

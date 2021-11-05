@@ -8,9 +8,9 @@ import ru.stersh.musicmagician.feature.editor.track.data.TrackEditorRepositoryIm
 import ru.stersh.musicmagician.feature.editor.track.domain.TrackEditorInteractor
 import ru.stersh.musicmagician.feature.editor.track.domain.TrackTagEditorInteractor
 import ru.stersh.musicmagician.feature.editor.track.domain.TrackTagSearchInteractor
-import ru.stersh.musicmagician.feature.editor.track.ui.editor.TrackEditorFragment
 import ru.stersh.musicmagician.feature.editor.track.ui.editor.TrackEditorViewModel
 import ru.stersh.musicmagician.feature.editor.track.ui.tageditor.TrackTagEditorViewModel
+import ru.stersh.musicmagician.feature.editor.track.ui.tagsearch.TrackTagSearchViewModel
 
 val trackEditorModule = module {
     single { TrackEditorRepositoryImpl() } bind TrackEditorRepository::class
@@ -19,4 +19,5 @@ val trackEditorModule = module {
     single { TrackTagSearchInteractor(get(), get(), get()) }
     viewModel { TrackEditorViewModel(get()) }
     viewModel { TrackTagEditorViewModel(get()) }
+    viewModel { TrackTagSearchViewModel(get()) }
 }

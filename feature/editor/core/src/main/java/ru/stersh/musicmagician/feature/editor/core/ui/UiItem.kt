@@ -8,9 +8,9 @@ sealed class UiItem {
         val artist: String,
         val album: String,
         val albumArtUrl: String,
-        val genre: String,
-        val year: Int,
-        val number: Int
+        val genre: String?,
+        val year: Int?,
+        val number: Int?
     ) : UiItem()
 
     data class Album(

@@ -1,7 +1,7 @@
 package ru.stersh.musicmagician.feature.editor.track.domain
 
-import ru.stersh.musicmagician.data.server.core.LyricTagRepository
-import ru.stersh.musicmagician.data.server.core.TrackTagRepository
+import ru.stersh.musicmagician.core.data.server.core.LyricTagRepository
+import ru.stersh.musicmagician.core.data.server.core.TrackTagRepository
 import ru.stersh.musicmagician.feature.editor.track.data.TrackEditorRepository
 
 class TrackTagSearchInteractor(
