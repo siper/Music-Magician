@@ -8,20 +8,20 @@ import com.pushtorefresh.storio3.contentresolver.queries.UpdateQuery
 import ru.stersh.musicmagician.albumartUri
 
 class AlbumartStorIOContentResolverPutResolver :
-    DefaultPutResolver<ru.stersh.musicmagician.data.core.entity.Albumart>() {
-    override fun mapToInsertQuery(albumart: ru.stersh.musicmagician.data.core.entity.Albumart): InsertQuery {
+    DefaultPutResolver<ru.stersh.musicmagician.data.core.internal.entity.Albumart>() {
+    override fun mapToInsertQuery(albumart: ru.stersh.musicmagician.data.core.internal.entity.Albumart): InsertQuery {
         return InsertQuery.builder()
             .uri(albumartUri)
             .build()
     }
 
-    override fun mapToUpdateQuery(albumart: ru.stersh.musicmagician.data.core.entity.Albumart): UpdateQuery {
+    override fun mapToUpdateQuery(albumart: ru.stersh.musicmagician.data.core.internal.entity.Albumart): UpdateQuery {
         return UpdateQuery.builder()
             .uri(ContentUris.withAppendedId(albumartUri, albumart.albumId))
             .build()
     }
 
-    override fun mapToContentValues(albumart: ru.stersh.musicmagician.data.core.entity.Albumart): ContentValues {
+    override fun mapToContentValues(albumart: ru.stersh.musicmagician.data.core.internal.entity.Albumart): ContentValues {
         val values = ContentValues()
         values.put("album_id", albumart.albumId)
         values.put("_data", albumart.path)

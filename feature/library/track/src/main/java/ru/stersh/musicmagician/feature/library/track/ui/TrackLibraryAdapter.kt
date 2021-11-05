@@ -69,8 +69,10 @@ class TrackLibraryAdapter(
                     title.text = item.title
                     artist.text = "${item.artist} (${item.album})"
 
-                    item.albumArtUri?.let {
-                        albumart.load(it)
+                    if (item.albumArtUri == null) {
+                        albumart.load(R.drawable.no_albumart)
+                    } else {
+                        albumart.load(item.albumArtUri)
                     }
                 }
             }

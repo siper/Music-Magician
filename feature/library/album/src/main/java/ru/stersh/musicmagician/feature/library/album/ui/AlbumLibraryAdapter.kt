@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
+import coil.load
 import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegate
 import ru.stersh.musicmagician.feature.library.album.R
@@ -68,6 +69,10 @@ class AlbumLibraryAdapter(callback: (UiItem.Album) -> Unit) : AsyncListDifferDel
                 titleLayout.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.md_grey_300))
                 artist.setTextColor(ContextCompat.getColor(itemView.context, R.color.text_primary))
                 title.setTextColor(ContextCompat.getColor(itemView.context, R.color.text_primary))
+
+                item.albumArtUri?.let {
+                    albumart.load(it)
+                }
 
 //                if (item.albumArt) {
 //                    Picasso

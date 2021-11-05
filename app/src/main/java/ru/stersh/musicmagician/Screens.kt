@@ -3,6 +3,7 @@ package ru.stersh.musicmagician
 import android.content.Intent
 import com.github.terrakok.cicerone.androidx.ActivityScreen
 import com.github.terrakok.cicerone.androidx.FragmentScreen
+import ru.stersh.musicmagician.feature.editor.track.ui.editor.TrackEditorFragment
 import ru.stersh.musicmagician.feature.library.album.ui.AlbumLibraryFragment
 import ru.stersh.musicmagician.feature.library.track.ui.TrackLibraryFragment
 import ru.stersh.musicmagician.feature.privacypolicy.PrivacyPolicyFragment
@@ -30,9 +31,9 @@ object Screens {
 //        AlbumEditorFragment.edit(album.id)
 //    }
 //
-//    fun trackEditor(track: Track) = FragmentScreen {
-//        TrackEditorFragment.edit(track)
-//    }
+    fun trackEditor(id: Long) = FragmentScreen {
+        TrackEditorFragment.edit(id)
+    }
 
     fun feedback() = ActivityScreen {
         val intent = Intent(Intent.ACTION_SEND).apply {

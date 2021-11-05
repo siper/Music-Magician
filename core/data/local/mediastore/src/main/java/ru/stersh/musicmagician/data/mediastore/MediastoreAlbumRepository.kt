@@ -13,10 +13,11 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import ru.stersh.musicmagician.data.core.AlbumRepository
-import ru.stersh.musicmagician.data.core.entity.Album
+import ru.stersh.musicmagician.data.core.internal.AlbumRepository
+import ru.stersh.musicmagician.data.core.internal.entity.Album
 import ru.stersh.musicmagician.data.mediastore.extension.getLongOrThrow
 import ru.stersh.musicmagician.data.mediastore.extension.getStringOrThrow
+import ru.stersh.musicmagician.data.mediastore.extension.isUriExists
 
 class MediastoreAlbumRepository(private val contentResolver: ContentResolver) : AlbumRepository {
     private val albumArtUri = Uri.parse("content://media/external/audio/albumart")
@@ -25,7 +26,9 @@ class MediastoreAlbumRepository(private val contentResolver: ContentResolver) : 
         MediaStore.Audio.Albums._ID,
         MediaStore.Audio.Albums.ARTIST,
         MediaStore.Audio.Albums.ALBUM,
-        MediaStore.Audio.Albums.ALBUM_ID
+        MediaStore.Audio.Albums.ALBUM_ID,
+        MediaStore.Audio.Albums.FIRST_YEAR,
+        MediaStore.Audio.Albums.LAST_YEAR
     )
 
     override fun getAllAlbums(): Flow<List<Album>> = callbackFlow {
@@ -101,11 +104,17 @@ class MediastoreAlbumRepository(private val contentResolver: ContentResolver) : 
         val year =
             (getStringOrThrow(MediaStore.Audio.Albums.FIRST_YEAR)
                 ?: getStringOrThrow(MediaStore.Audio.Albums.LAST_YEAR))?.toIntOrNull()
+        val uri = ContentUris.withAppendedId(albumArtUri, id)
+
         return Album(
             id = id,
             title = getStringOrThrow(MediaStore.Audio.Media.ALBUM)!!,
             artist = getStringOrThrow(MediaStore.Audio.Media.ARTIST)!!,
-            albumArtUri = ContentUris.withAppendedId(albumArtUri, id),
+            albumArtUri = if (contentResolver.isUriExists(uri)) {
+                uri
+            } else {
+                null
+            },
             year = year
         )
     }

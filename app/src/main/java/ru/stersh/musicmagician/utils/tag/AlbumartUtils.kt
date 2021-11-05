@@ -47,7 +47,7 @@ object AlbumartUtils {
     fun put(id: Long, newAlbumart: String) {
         var albumart = storIOContentResolver
             .get()
-            .`object`(ru.stersh.musicmagician.data.core.entity.Albumart::class.java)
+            .`object`(ru.stersh.musicmagician.data.core.internal.entity.Albumart::class.java)
             .withQuery(
                 Query
                     .builder()
@@ -61,7 +61,7 @@ object AlbumartUtils {
                // if (exists()) delete()
             }
         }
-        albumart = ru.stersh.musicmagician.data.core.entity.Albumart(
+        albumart = ru.stersh.musicmagician.data.core.internal.entity.Albumart(
             albumId = id,
             path = generateThumbnail(newAlbumart)
         )

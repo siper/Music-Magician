@@ -24,6 +24,7 @@ class DeezerAlbumTagRepository(private val deezerApi: DeezerApi) : AlbumTagRepos
                     album = it.album.title.trim(),
                     albumArtUrl = it.album.coverBig.trim(),
                     artist = it.artist.name.trim(),
+                    year = 0
                 )
             }
             .distinct()

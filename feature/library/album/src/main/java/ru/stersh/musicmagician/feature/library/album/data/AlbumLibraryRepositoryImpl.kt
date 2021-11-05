@@ -2,7 +2,7 @@ package ru.stersh.musicmagician.feature.library.album.data
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import ru.stersh.musicmagician.data.core.AlbumRepository
+import ru.stersh.musicmagician.data.core.internal.AlbumRepository
 import ru.stersh.musicmagician.feature.library.album.data.library.AlbumLibraryRepository
 import ru.stersh.musicmagician.feature.library.album.data.library.LibraryAlbum
 

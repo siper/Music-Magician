@@ -1,19 +1,8 @@
 package ru.stersh.musicmagician.utils.tag
 
-import android.text.TextUtils
-import org.jaudiotagger.tag.FieldDataInvalidException
-import org.jaudiotagger.tag.FieldKey
-import org.jaudiotagger.tag.Tag
-import org.jaudiotagger.tag.flac.FlacTag
-import org.jaudiotagger.tag.id3.ID3v1Tag
-import org.jaudiotagger.tag.id3.ID3v24Tag
-import org.jaudiotagger.tag.mp4.Mp4Tag
-import timber.log.Timber
-import java.nio.charset.StandardCharsets
-
-object TrackUtils {
-    private fun getFlacTag(track: ru.stersh.musicmagician.data.core.entity.Track): FlacTag {
-        val tag = FlacTag()
+//object TrackUtils {
+//    private fun getFlacTag(track: ru.stersh.musicmagician.data.core.internal.entity.Track): FlacTag {
+//        val tag = FlacTag()
 //        if (!TextUtils.isEmpty(track.title)) {
 //            try {
 //                tag.addField(FieldKey.TITLE, track.title)
@@ -90,11 +79,11 @@ object TrackUtils {
 //                Timber.d("Error setting albumart")
 //            }
 //        }
-        return tag
-    }
-
-    private fun getID3v1Tag(track: ru.stersh.musicmagician.data.core.entity.Track): Tag {
-        val tag: Tag = ID3v1Tag()
+//        return tag
+//    }
+//
+//    private fun getID3v1Tag(track: ru.stersh.musicmagician.data.core.internal.entity.Track): Tag {
+//        val tag: Tag = ID3v1Tag()
 //        if (!TextUtils.isEmpty(track.title)) {
 //            try {
 //                var text = track.title
@@ -140,28 +129,28 @@ object TrackUtils {
 //                Timber.d("Filed to save year")
 //            }
 //        }
-////        if (!TextUtils.isEmpty(track.genre)) {
-////            try {
-////                var text = track.genre
-////                text = String(text.toByteArray(), StandardCharsets.ISO_8859_1)
-////                tag.setField(FieldKey.GENRE, text)
-////            } catch (e: FieldDataInvalidException) {
-////                Timber.d("Filed to save genre")
-////            }
-////        }
-////        if (!TextUtils.isEmpty(track.comment)) {
-////            try {
-////                var text = track.comment
-////                text = String(text.toByteArray(), StandardCharsets.ISO_8859_1)
-////                tag.setField(FieldKey.COMMENT, text)
-////            } catch (e: FieldDataInvalidException) {
-////                Timber.d("Filed to save comment")
-////            }
-////        }
+//        if (!TextUtils.isEmpty(track.genre)) {
+//            try {
+//                var text = track.genre
+//                text = String(text.toByteArray(), StandardCharsets.ISO_8859_1)
+//                tag.setField(FieldKey.GENRE, text)
+//            } catch (e: FieldDataInvalidException) {
+//                Timber.d("Filed to save genre")
+//            }
+//        }
+//        if (!TextUtils.isEmpty(track.comment)) {
+//            try {
+//                var text = track.comment
+//                text = String(text.toByteArray(), StandardCharsets.ISO_8859_1)
+//                tag.setField(FieldKey.COMMENT, text)
+//            } catch (e: FieldDataInvalidException) {
+//                Timber.d("Filed to save comment")
+//            }
+//        }
 //        return tag
 //    }
 //
-//    private fun getID3v24Tag(track: ru.stersh.musicmagician.data.core.entity.Track): Tag {
+//    private fun getID3v24Tag(track: ru.stersh.musicmagician.data.core.internal.entity.Track): Tag {
 //        val tag: Tag = ID3v24Tag()
 //        if (!TextUtils.isEmpty(track.title)) {
 //            try {
@@ -241,11 +230,11 @@ object TrackUtils {
 //        } catch (e: NullPointerException) {
 //            Timber.d("Filed to save albumart")
 //        }
-        return tag
-    }
-
-    private fun getMp4Tag(track: ru.stersh.musicmagician.data.core.entity.Track): Mp4Tag {
-        val tag = Mp4Tag()
+//        return tag
+//    }
+//
+//    private fun getMp4Tag(track: ru.stersh.musicmagician.data.core.internal.entity.Track): Mp4Tag {
+//        val tag = Mp4Tag()
 //        if (!TextUtils.isEmpty(track.title)) {
 //            try {
 //                tag.addField(FieldKey.TITLE, track.title)
@@ -313,11 +302,11 @@ object TrackUtils {
 //                Timber.d("Error setting albumart")
 //            }
 //        }
-        return tag
-    }
+//        return tag
+//    }
 
-    private fun getWavTag(track: ru.stersh.musicmagician.data.core.entity.Track): ID3v1Tag {
-        val tag = ID3v1Tag()
+//    private fun getWavTag(track: ru.stersh.musicmagician.data.core.internal.entity.Track): ID3v1Tag {
+//        val tag = ID3v1Tag()
 //        if (!TextUtils.isEmpty(track.title)) {
 //            try {
 //                tag.addField(FieldKey.TITLE, track.title)
@@ -374,10 +363,10 @@ object TrackUtils {
 //                Timber.d("Error setting lyrics")
 //            }
 //        }
-        return tag
-    }
-
-    fun save(track: ru.stersh.musicmagician.data.core.entity.Track) {
+//        return tag
+//    }
+//
+//    fun save(track: ru.stersh.musicmagician.data.core.internal.entity.Track) {
 //        try {
 //            val audio = AudioFileIO().readFile(File(track.path))
 //            val path = track.path.lowercase(Locale.ROOT)
@@ -400,5 +389,5 @@ object TrackUtils {
 //        } catch (e: Exception) {
 //            Timber.d(e, "Error saving track")
 //        }
-    }
-}
+//    }
+//}

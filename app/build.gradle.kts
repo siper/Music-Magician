@@ -50,11 +50,17 @@ dependencies {
 
     implementation(project(":core:ui"))
     implementation(project(":core:navigation"))
+
     implementation(project(":core:data:local:core"))
     implementation(project(":core:data:local:mediastore"))
+    implementation(project(":core:data:local:jaudiotagger"))
+
+    implementation(project(":core:data:server:core"))
+    implementation(project(":core:data:server:mediator"))
 
     implementation(project(":feature:library:track"))
     implementation(project(":feature:library:album"))
+    implementation(project(":feature:editor:track"))
     implementation(project(":feature:privacypolicy"))
 
     // Shimmer layout

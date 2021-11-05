@@ -2,14 +2,6 @@
 <resources>
     <string name="app_name" translatable="false">Music Magician</string>
     <string name="tag_artist_and_album" translatable="false">%s (%s)</string>
-    <string name="tag_title">Title</string>
-    <string name="tag_artist">Artist</string>
-    <string name="tag_album">Album</string>
-    <string name="tag_year">Year</string>
-    <string name="tag_track">Track</string>
-    <string name="tag_genre">Genre</string>
-    <string name="tag_lyrics">Lyrics</string>
-    <string name="tag_comment">Comment</string>
     <string name="progress_loading_files">Loading music files&#8230;</string>
     <string name="progress_loading_search_results">Loading results&#8230;</string>
     <string name="progress_saving_tags">Saving tags&#8230;</string>

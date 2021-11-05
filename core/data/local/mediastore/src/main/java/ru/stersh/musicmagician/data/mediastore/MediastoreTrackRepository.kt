@@ -12,8 +12,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import ru.stersh.musicmagician.data.core.TrackRepository
-import ru.stersh.musicmagician.data.core.entity.Track
+import ru.stersh.musicmagician.data.core.internal.TrackRepository
+import ru.stersh.musicmagician.data.core.internal.entity.Track
 import ru.stersh.musicmagician.data.mediastore.extension.getLongOrThrow
 import ru.stersh.musicmagician.data.mediastore.extension.getStringOrThrow
 
@@ -51,7 +51,7 @@ class MediastoreTrackRepository(private val contentResolver: ContentResolver) : 
         }
     }
 
-    override suspend fun getTrack(id: Int): Track? {
+    override suspend fun getTrack(id: Long): Track? {
         return contentResolver.query(
             uri,
             projection,
@@ -59,6 +59,7 @@ class MediastoreTrackRepository(private val contentResolver: ContentResolver) : 
             null,
             null
         ).run {
+            this?.moveToFirst()
             this?.toTrack().also {
                 this?.close()
             }

@@ -4,9 +4,9 @@ import com.pushtorefresh.storio3.contentresolver.operations.delete.DefaultDelete
 import com.pushtorefresh.storio3.contentresolver.queries.DeleteQuery
 
 class TrackStorIOContentResolverDeleteResolver :
-    DefaultDeleteResolver<ru.stersh.musicmagician.data.core.entity.Track>() {
+    DefaultDeleteResolver<ru.stersh.musicmagician.data.core.internal.entity.Track>() {
 
-    public override fun mapToDeleteQuery(`object`: ru.stersh.musicmagician.data.core.entity.Track): DeleteQuery {
+    public override fun mapToDeleteQuery(`object`: ru.stersh.musicmagician.data.core.internal.entity.Track): DeleteQuery {
         return DeleteQuery.builder()
             .uri("content://media/external/audio/media")
             .where("_id = ?")

@@ -2,8 +2,8 @@ package ru.stersh.musicmagician.feature.library.track.data
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
-import ru.stersh.musicmagician.data.core.AlbumRepository
-import ru.stersh.musicmagician.data.core.TrackRepository
+import ru.stersh.musicmagician.data.core.internal.AlbumRepository
+import ru.stersh.musicmagician.data.core.internal.TrackRepository
 import ru.stersh.musicmagician.feature.library.track.data.library.LibraryTrack
 import ru.stersh.musicmagician.feature.library.track.data.library.TrackLibraryRepository
 

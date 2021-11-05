@@ -4,5 +4,5 @@ data class AlbumTag(
     val album: String,
     val artist: String,
     val albumArtUrl: String,
-    val year: Int = 0
+    val year: Int
 )

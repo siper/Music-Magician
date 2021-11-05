@@ -6,9 +6,9 @@ import com.pushtorefresh.storio3.contentresolver.queries.DeleteQuery
 import ru.stersh.musicmagician.albumartUri
 
 class AlbumartStorIOContentResolverDeleteResolver :
-    DefaultDeleteResolver<ru.stersh.musicmagician.data.core.entity.Albumart>() {
+    DefaultDeleteResolver<ru.stersh.musicmagician.data.core.internal.entity.Albumart>() {
 
-    override fun mapToDeleteQuery(albumart: ru.stersh.musicmagician.data.core.entity.Albumart): DeleteQuery {
+    override fun mapToDeleteQuery(albumart: ru.stersh.musicmagician.data.core.internal.entity.Albumart): DeleteQuery {
         return DeleteQuery
             .builder()
             .uri(ContentUris.withAppendedId(albumartUri, albumart.albumId))

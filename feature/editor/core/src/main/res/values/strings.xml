@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="apply_tags">Apply tags</string>
+    <string name="search_title">Search</string>
+    <string name="editor_title">Editor</string>
+
+    <string name="tag_title">Title</string>
+    <string name="tag_artist">Artist</string>
+    <string name="tag_album">Album</string>
+    <string name="tag_year">Year</string>
+    <string name="tag_track">Track</string>
+    <string name="tag_genre">Genre</string>
+    <string name="tag_lyrics">Lyrics</string>
+    <string name="tag_comment">Comment</string>
+</resources>
