@@ -1,13 +1,10 @@
-package ru.stersh.musicmagician.feature.editor.core.ui
+package ru.stersh.musicmagician.feature.editor.core.ui.editor
 
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
 import androidx.core.view.ViewCompat
 import androidx.core.view.ViewPropertyAnimatorListener
 import androidx.fragment.app.Fragment
@@ -16,7 +13,6 @@ import coil.load
 import com.github.terrakok.cicerone.Router
 import com.google.android.material.appbar.AppBarLayout
 import org.koin.android.ext.android.inject
-import ru.stersh.musicmagician.core.navigation.DrawerNavigation
 import ru.stersh.musicmagician.feature.editor.core.R
 import ru.stersh.musicmagician.feature.editor.core.databinding.FragmentBaseEditorBinding
 import ru.stersh.musicmagician.ui.extension.gone
@@ -114,7 +110,7 @@ abstract class EditorFragment : Fragment() {
     }
 
     private fun initToolbar() = with(binding.toolbar) {
-        setNavigationIcon(R.drawable.ic_arrow_back_24px)
+        setNavigationIcon(ru.stersh.musicmagician.ui.R.drawable.ic_arrow_back_24px)
         setNavigationOnClickListener {
             router.exit()
         }

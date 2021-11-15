@@ -7,11 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import coil.load
 import kotlinx.coroutines.flow.collect
-import org.koin.android.scope.AndroidScopeComponent
-import org.koin.androidx.scope.fragmentScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.scope.Scope
-import ru.stersh.musicmagician.feature.editor.core.ui.EditorFragment
+import ru.stersh.musicmagician.feature.editor.core.ui.editor.EditorFragment
 import ru.stersh.musicmagician.feature.editor.track.R
 import ru.stersh.musicmagician.feature.editor.track.ui.tageditor.TrackTagEditorFragment
 import ru.stersh.musicmagician.feature.editor.track.ui.tagsearch.TrackTagSearchFragment

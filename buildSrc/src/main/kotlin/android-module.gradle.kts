@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    compileSdk = 31
+    compileSdk = Sdk.COMPILE_SDK
 
     defaultConfig {
-        minSdk = 21
-        targetSdk = 31
+        minSdk = Sdk.MIN_SDK
+        targetSdk = Sdk.TARGET_SDK
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 

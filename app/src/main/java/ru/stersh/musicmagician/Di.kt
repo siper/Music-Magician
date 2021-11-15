@@ -11,6 +11,7 @@ import org.koin.core.module.Module
 import org.koin.dsl.bind
 import org.koin.dsl.module
 import ru.stersh.musicmagician.core.data.server.mediator.mediatorRepositoryModules
+import ru.stersh.musicmagician.core.utils.BitmapLoader
 import ru.stersh.musicmagician.data.mediastore.mediaStoreDataModule
 import ru.stersh.musicmagician.feature.editor.track.trackEditorModule
 import ru.stersh.musicmagician.feature.library.album.albumLibraryModule
@@ -49,7 +50,7 @@ object Di : KoinComponent {
 
     private val utils = module {
         single { Moshi.Builder().build() }
-        single { FileDownloader(get()) }
+        single { BitmapLoader(get()) }
     }
 
     private val network = module {

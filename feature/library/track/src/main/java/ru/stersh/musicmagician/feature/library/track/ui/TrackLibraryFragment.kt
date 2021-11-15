@@ -115,7 +115,7 @@ class TrackLibraryFragment : Fragment(), SearchView.OnQueryTextListener {
         val search = searchItem?.actionView as? SearchView
         search?.setOnQueryTextListener(this@TrackLibraryFragment)
 
-        setNavigationIcon(R.drawable.ic_menu_24px)
+        setNavigationIcon(ru.stersh.musicmagician.feature.library.core.R.drawable.ic_menu_24px)
         setNavigationOnClickListener {
             (requireActivity() as? DrawerNavigation)?.openDrawer()
         }
@@ -153,7 +153,7 @@ class TrackLibraryFragment : Fragment(), SearchView.OnQueryTextListener {
             }
         }
 
-        setTitle(R.string.tracks)
+        setTitle(ru.stersh.musicmagician.ui.R.string.tracks)
     }
 
     private fun subscribeSortOrder() = lifecycleScope.launchWhenStarted {

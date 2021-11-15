@@ -12,11 +12,10 @@ class ItunesTrackTagRepository(private val itunesApi: ItunesApi) : TrackTagRepos
     }
 
     private fun ItunesTrackResult.toTrackTag(): List<TrackTag> {
-        if (this.resultCount <= 0) {
+        if (resultCount <= 0) {
             return emptyList()
         }
-        return this
-            .results
+        return results
             .filter { it.kind == "song" }
             .mapNotNull {
                 TrackTag(
@@ -25,8 +24,8 @@ class ItunesTrackTagRepository(private val itunesApi: ItunesApi) : TrackTagRepos
                     album = it.collectionName ?: return@mapNotNull null,
                     albumArtUrl = it.artworkUrl100?.replace("100x100bb", "500x500-100") ?: return@mapNotNull null,
                     genre = it.primaryGenreName,
-                    year = it.releaseDate?.substring(0, 4)?.toInt(),
-                    number = it.trackNumber
+                    year = it.releaseDate?.substring(0, 4),
+                    number = it.trackNumber?.toString()
                 )
             }
     }

@@ -25,9 +25,9 @@ class DeezerTrackTagRepository(private val deezerApi: DeezerApi) : TrackTagRepos
                     albumArtUrl = it.album.coverBig,
                     artist = it.artist.name.trim(),
                     album = it.album.title.trim(),
-                    year = 0,
-                    genre = "",
-                    number = 0
+                    year = null,
+                    genre = null,
+                    number = null
                 )
             }
     }

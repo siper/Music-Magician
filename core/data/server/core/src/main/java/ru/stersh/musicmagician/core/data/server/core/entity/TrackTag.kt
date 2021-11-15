@@ -6,6 +6,6 @@ data class TrackTag(
     val album: String,
     val albumArtUrl: String,
     val genre: String?,
-    val year: Int?,
-    val number: Int?
+    val year: String?,
+    val number: String?
 )

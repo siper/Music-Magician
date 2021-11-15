@@ -4,6 +4,7 @@ plugins {
 
 dependencies {
     api(project(":core:data:local:core"))
+    api(project(":core:utils"))
     api(project(":core:ui"))
     api(project(":core:navigation"))
     api(libs.shimmer)

@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity(), MainView, DrawerNavigation {
     private val router by inject<Router>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.AppTheme_Light)
+        setTheme(ru.stersh.musicmagician.ui.R.style.AppTheme_Light)
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

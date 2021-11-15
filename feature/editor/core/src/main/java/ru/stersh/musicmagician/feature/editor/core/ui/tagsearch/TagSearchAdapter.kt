@@ -1,4 +1,4 @@
-package ru.stersh.musicmagician.feature.editor.core.ui
+package ru.stersh.musicmagician.feature.editor.core.ui.tagsearch
 
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -48,7 +48,7 @@ class TagSearchAdapter(callback: (UiItem) -> Unit) : AsyncListDifferDelegationAd
                                 && oldItem.album == newItem.album
                                 && oldItem.albumArtUrl == newItem.albumArtUrl
                                 && oldItem.genre == newItem.genre
-                                && oldItem.number == newItem.number
+                                && oldItem.trackNumber == newItem.trackNumber
                                 && oldItem.year == newItem.year
                     }
                     if (oldItem is UiItem.Album && newItem is UiItem.Album) {

@@ -1,4 +1,4 @@
-package ru.stersh.musicmagician.feature.editor.core.ui
+package ru.stersh.musicmagician.feature.editor.core.ui.editor
 
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment

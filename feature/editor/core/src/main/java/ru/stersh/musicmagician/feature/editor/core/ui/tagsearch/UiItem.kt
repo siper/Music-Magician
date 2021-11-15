@@ -1,4 +1,4 @@
-package ru.stersh.musicmagician.feature.editor.core.ui
+package ru.stersh.musicmagician.feature.editor.core.ui.tagsearch
 
 import androidx.annotation.StringRes
 
@@ -9,8 +9,8 @@ sealed class UiItem {
         val album: String,
         val albumArtUrl: String,
         val genre: String?,
-        val year: Int?,
-        val number: Int?
+        val year: String?,
+        val trackNumber: String?
     ) : UiItem()
 
     data class Album(

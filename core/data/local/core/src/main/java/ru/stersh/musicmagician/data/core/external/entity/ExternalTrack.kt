@@ -7,6 +7,7 @@ import java.io.File
 data class ExternalTrack(
     val uri: Uri,
     val file: File,
+    val extension: String,
     val title: String?,
     val artist: String?,
     val album: String?,

@@ -57,8 +57,8 @@ class PrivacyPolicyFragment : Fragment() {
         (requireActivity() as AppCompatActivity).apply {
             setSupportActionBar(binding.toolbar)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
-            supportActionBar?.title = getString(R.string.privacy_policy)
-            supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back_24px)
+            supportActionBar?.title = getString(ru.stersh.musicmagician.ui.R.string.privacy_policy)
+            supportActionBar?.setHomeAsUpIndicator(ru.stersh.musicmagician.ui.R.drawable.ic_arrow_back_24px)
         }
     }
 }

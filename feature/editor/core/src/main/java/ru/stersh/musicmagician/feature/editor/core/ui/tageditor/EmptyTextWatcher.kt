@@ -1,4 +1,4 @@
-package ru.stersh.musicmagician.feature.editor.core.ui
+package ru.stersh.musicmagician.feature.editor.core.ui.tageditor
 
 import android.text.Editable
 import android.text.TextWatcher

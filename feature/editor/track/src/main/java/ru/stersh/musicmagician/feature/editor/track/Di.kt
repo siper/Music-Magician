@@ -16,7 +16,7 @@ val trackEditorModule = module {
     single { TrackEditorRepositoryImpl() } bind TrackEditorRepository::class
     single { TrackEditorInteractor(get(), get(), get()) }
     single { TrackTagEditorInteractor(get()) }
-    single { TrackTagSearchInteractor(get(), get(), get()) }
+    single { TrackTagSearchInteractor(get(), get(), get(), get()) }
     viewModel { TrackEditorViewModel(get()) }
     viewModel { TrackTagEditorViewModel(get()) }
     viewModel { TrackTagSearchViewModel(get()) }

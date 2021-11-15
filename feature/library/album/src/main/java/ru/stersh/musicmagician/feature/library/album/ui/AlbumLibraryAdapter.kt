@@ -64,11 +64,11 @@ class AlbumLibraryAdapter(callback: (UiItem.Album) -> Unit) : AsyncListDifferDel
                 title.text = item.title
                 artist.text = item.artist
 
-                artist.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.md_grey_300))
-                title.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.md_grey_300))
-                titleLayout.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.md_grey_300))
-                artist.setTextColor(ContextCompat.getColor(itemView.context, R.color.text_primary))
-                title.setTextColor(ContextCompat.getColor(itemView.context, R.color.text_primary))
+                artist.setBackgroundColor(ContextCompat.getColor(itemView.context, ru.stersh.musicmagician.ui.R.color.md_grey_300))
+                title.setBackgroundColor(ContextCompat.getColor(itemView.context, ru.stersh.musicmagician.ui.R.color.md_grey_300))
+                titleLayout.setBackgroundColor(ContextCompat.getColor(itemView.context, ru.stersh.musicmagician.ui.R.color.md_grey_300))
+                artist.setTextColor(ContextCompat.getColor(itemView.context, ru.stersh.musicmagician.ui.R.color.text_primary))
+                title.setTextColor(ContextCompat.getColor(itemView.context, ru.stersh.musicmagician.ui.R.color.text_primary))
 
                 item.albumArtUri?.let {
                     albumart.load(it)

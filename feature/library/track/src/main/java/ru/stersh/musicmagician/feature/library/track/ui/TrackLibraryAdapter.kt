@@ -70,7 +70,7 @@ class TrackLibraryAdapter(
                     artist.text = "${item.artist} (${item.album})"
 
                     if (item.albumArtUri == null) {
-                        albumart.load(R.drawable.no_albumart)
+                        albumart.load(ru.stersh.musicmagician.ui.R.drawable.no_albumart)
                     } else {
                         albumart.load(item.albumArtUri)
                     }

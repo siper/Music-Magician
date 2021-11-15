@@ -84,8 +84,8 @@ class AlbumLibraryFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private fun showStub() {
         binding.stub.root.show()
-        binding.stub.stubTitle.text = getString(R.string.media_error_title)
-        binding.stub.stubMessage.text = getString(R.string.media_error_message)
+        binding.stub.stubTitle.text = getString(ru.stersh.musicmagician.feature.library.core.R.string.media_error_title)
+        binding.stub.stubMessage.text = getString(ru.stersh.musicmagician.feature.library.core.R.string.media_error_message)
         binding.content.gone()
     }
 
@@ -113,7 +113,7 @@ class AlbumLibraryFragment : Fragment(), SearchView.OnQueryTextListener {
         val search = searchItem?.actionView as? SearchView
         search?.setOnQueryTextListener(this@AlbumLibraryFragment)
 
-        setNavigationIcon(R.drawable.ic_menu_24px)
+        setNavigationIcon(ru.stersh.musicmagician.feature.library.core.R.drawable.ic_menu_24px)
         setNavigationOnClickListener {
             (requireActivity() as? DrawerNavigation)?.openDrawer()
         }
@@ -152,7 +152,7 @@ class AlbumLibraryFragment : Fragment(), SearchView.OnQueryTextListener {
             }
         }
 
-        setTitle(R.string.albums)
+        setTitle(ru.stersh.musicmagician.ui.R.string.albums)
     }
 
     private fun subscribeSortOrder() = lifecycleScope.launchWhenStarted {

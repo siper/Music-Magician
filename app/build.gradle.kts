@@ -9,13 +9,13 @@ val versionMinor = 0
 val versionPatch = 3
 
 android {
-    compileSdk = 31
-    buildToolsVersion = "30.0.3"
+    compileSdk = Sdk.COMPILE_SDK
+    buildToolsVersion = Sdk.BUILD_TOOLS_VERSION
 
     defaultConfig {
         applicationId = "ru.stersh.musicmagician"
-        minSdk = 21
-        targetSdk = 31
+        minSdk = Sdk.MIN_SDK
+        targetSdk = Sdk.TARGET_SDK
         versionCode = versionMajor * 10000 + versionMinor * 100 + versionPatch
         versionName = "${versionMajor}.${versionMinor}.${versionPatch}"
     }
@@ -33,13 +33,12 @@ android {
             isMinifyEnabled = false
         }
     }
+
     lint {
-        isAbortOnError = false
+        isWarningsAsErrors = true
+        isAbortOnError = true
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
+
     buildFeatures {
         viewBinding = true
     }
@@ -49,6 +48,7 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
     implementation(project(":core:ui"))
+    implementation(project(":core:utils"))
     implementation(project(":core:navigation"))
 
     implementation(project(":core:data:local:core"))

@@ -1,4 +1,4 @@
-package ru.stersh.musicmagician.feature.editor.track.ui.tageditor//package ru.stersh.musicmagician.ui.fragment.editor.track
+package ru.stersh.musicmagician.feature.editor.track.ui.tageditor
 
 import android.os.Bundle
 import android.text.Editable
@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.flow.collect
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import ru.stersh.musicmagician.feature.editor.core.ui.EmptyTextWatcher
+import ru.stersh.musicmagician.feature.editor.core.ui.tageditor.EmptyTextWatcher
 import ru.stersh.musicmagician.feature.editor.track.databinding.FragmentTrackEditorBinding
 
 class TrackTagEditorFragment : Fragment() {
@@ -82,71 +82,75 @@ class TrackTagEditorFragment : Fragment() {
     private fun subscribeFields() {
         lifecycleScope.launchWhenStarted {
             viewModel.title.collect {
-                binding.title.removeTextChangedListener(titleTextWatcher)
-                binding.title.setText(it)
-                binding.title.addTextChangedListener(titleTextWatcher)
+                if (binding.title.text?.toString() != it) {
+                    binding.title.removeTextChangedListener(titleTextWatcher)
+                    binding.title.setText(it)
+                    binding.title.addTextChangedListener(titleTextWatcher)
+                }
             }
         }
         lifecycleScope.launchWhenStarted {
             viewModel.album.collect {
-                binding.album.removeTextChangedListener(albumTextWatcher)
-                binding.album.setText(it)
-                binding.album.addTextChangedListener(albumTextWatcher)
+                if (binding.album.text?.toString() != it) {
+                    binding.album.removeTextChangedListener(albumTextWatcher)
+                    binding.album.setText(it)
+                    binding.album.addTextChangedListener(albumTextWatcher)
+                }
             }
         }
         lifecycleScope.launchWhenStarted {
             viewModel.artist.collect {
-                binding.artist.removeTextChangedListener(artistTextWatcher)
-                binding.artist.setText(it)
-                binding.artist.addTextChangedListener(artistTextWatcher)
+                if (binding.artist.text?.toString() != it) {
+                    binding.artist.removeTextChangedListener(artistTextWatcher)
+                    binding.artist.setText(it)
+                    binding.artist.addTextChangedListener(artistTextWatcher)
+                }
             }
         }
         lifecycleScope.launchWhenStarted {
             viewModel.comment.collect {
-                binding.comment.removeTextChangedListener(commentTextWatcher)
-                binding.comment.setText(it)
-                binding.comment.addTextChangedListener(commentTextWatcher)
+                if (binding.comment.text?.toString() != it) {
+                    binding.comment.removeTextChangedListener(commentTextWatcher)
+                    binding.comment.setText(it)
+                    binding.comment.addTextChangedListener(commentTextWatcher)
+                }
             }
         }
         lifecycleScope.launchWhenStarted {
             viewModel.year.collect {
-                binding.year.removeTextChangedListener(yearTextWatcher)
-                binding.year.setText(it)
-                binding.year.addTextChangedListener(yearTextWatcher)
+                if (binding.year.text?.toString() != it) {
+                    binding.year.removeTextChangedListener(yearTextWatcher)
+                    binding.year.setText(it)
+                    binding.year.addTextChangedListener(yearTextWatcher)
+                }
             }
         }
         lifecycleScope.launchWhenStarted {
             viewModel.trackNumber.collect {
-                binding.trackNumber.removeTextChangedListener(trackNumberTextWatcher)
-                binding.trackNumber.setText(it)
-                binding.trackNumber.addTextChangedListener(trackNumberTextWatcher)
+                if (binding.trackNumber.text?.toString() != it) {
+                    binding.trackNumber.removeTextChangedListener(trackNumberTextWatcher)
+                    binding.trackNumber.setText(it)
+                    binding.trackNumber.addTextChangedListener(trackNumberTextWatcher)
+                }
             }
         }
         lifecycleScope.launchWhenStarted {
             viewModel.genre.collect {
-                binding.genre.removeTextChangedListener(genreTextWatcher)
-                binding.genre.setText(it)
-                binding.genre.addTextChangedListener(genreTextWatcher)
+                if (binding.genre.text?.toString() != it) {
+                    binding.genre.removeTextChangedListener(genreTextWatcher)
+                    binding.genre.setText(it)
+                    binding.genre.addTextChangedListener(genreTextWatcher)
+                }
             }
         }
         lifecycleScope.launchWhenStarted {
             viewModel.lyrics.collect {
-                binding.lyrics.removeTextChangedListener(lyricsTextWatcher)
-                binding.lyrics.setText(it)
-                binding.lyrics.addTextChangedListener(lyricsTextWatcher)
+                if (binding.lyrics.text?.toString() != it) {
+                    binding.lyrics.removeTextChangedListener(lyricsTextWatcher)
+                    binding.lyrics.setText(it)
+                    binding.lyrics.addTextChangedListener(lyricsTextWatcher)
+                }
             }
-        }
-    }
-
-    companion object {
-        private const val PATH_KEY = "path"
-
-        fun path(path: String): TrackTagEditorFragment {
-            val fr = TrackTagEditorFragment()
-            val bundle = Bundle()
-            bundle.putString(PATH_KEY, path)
-            fr.arguments = bundle
-            return fr
         }
     }
 }

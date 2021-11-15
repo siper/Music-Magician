@@ -1,4 +1,4 @@
-package ru.stersh.musicmagician.feature.editor.core.ui
+package ru.stersh.musicmagician.feature.editor.core.ui.tagsearch
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import ru.stersh.musicmagician.feature.editor.core.databinding.FragmentTagSearchBinding
+import ru.stersh.musicmagician.ui.extension.dp
 import ru.stersh.musicmagician.ui.extension.gone
 import ru.stersh.musicmagician.ui.extension.show
 
@@ -53,5 +54,6 @@ abstract class TagSearchFragment : Fragment() {
     private fun initAdapter() {
         binding.content.layoutManager = LinearLayoutManager(requireContext())
         binding.content.adapter = adapter
+        binding.content.addItemDecoration(BottomMargin(80.dp))
     }
 }
