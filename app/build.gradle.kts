@@ -34,7 +34,7 @@ android {
         }
     }
     lint {
-        isAbortOnError = false
+        abortOnError = false
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
