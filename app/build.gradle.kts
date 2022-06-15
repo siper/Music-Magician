@@ -79,7 +79,7 @@ dependencies {
 
     // Kotlin std
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.0")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.6.21")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.7.0")
 
     // OkHttp 4
     implementation("com.squareup.okhttp3:okhttp:4.10.0")
