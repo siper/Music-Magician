@@ -67,7 +67,7 @@ dependencies {
     implementation("com.pushtorefresh.storio3:content-resolver:3.0.0")
 
     // AndroidX
-    implementation("com.google.android.material:material:1.7.0")
+    implementation("com.google.android.material:material:1.8.0")
     implementation("androidx.appcompat:appcompat:1.6.0")
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
