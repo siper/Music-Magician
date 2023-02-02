@@ -9,13 +9,13 @@ val versionMinor = 0
 val versionPatch = 3
 
 android {
-    compileSdk = 30
-    buildToolsVersion = "30.0.3"
+    compileSdk = 33
+    buildToolsVersion = "33.0.0"
 
     defaultConfig {
         applicationId = "ru.stersh.musicmagician"
         minSdk = 21
-        targetSdk = 30
+        targetSdk = 33
         versionCode = versionMajor * 10000 + versionMinor * 100 + versionPatch
         versionName = "${versionMajor}.${versionMinor}.${versionPatch}"
     }
