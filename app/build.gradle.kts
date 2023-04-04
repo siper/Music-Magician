@@ -109,7 +109,7 @@ dependencies {
 
     // Calligraphy 3
     implementation("io.github.inflationx:calligraphy3:3.1.1")
-    implementation("io.github.inflationx:viewpump:2.0.3")
+    implementation("io.github.inflationx:viewpump:2.1.0")
 
     // Leak Canary
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.10")
