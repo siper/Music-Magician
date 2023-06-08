@@ -78,8 +78,8 @@ dependencies {
     implementation("com.squareup.picasso:picasso:2.71828")
 
     // Kotlin std
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.21")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.21")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.22")
 
     // OkHttp 4
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
