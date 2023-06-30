@@ -112,7 +112,7 @@ dependencies {
     implementation("io.github.inflationx:viewpump:2.1.1")
 
     // Leak Canary
-    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.11")
+    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.12")
 
     // Timber
     implementation("com.jakewharton.timber:timber:5.0.1")
